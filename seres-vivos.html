@@ -35,7 +35,6 @@
             pointer-events: none;
         }
 
-        /* ✅ Franja blanca más arriba sin mover posiciones */
         .franja-fondo {
             position: absolute;
             top: 0;
@@ -94,6 +93,7 @@
         }
         .columna-izquierda { flex: 3; display: flex; flex-direction: column; gap: 25px; }
         .columna-derecha { flex: 1; display: flex; flex-direction: column; gap: 20px; border-left: 3px solid #2e7d32; padding-left: 20px; }
+
         .tarjeta-seccion {
             border-radius: 18px;
             overflow: hidden;
@@ -110,12 +110,29 @@
             color: white;
             font-family: 'Playfair Display', serif;
         }
-        .cuerpo-tarjeta { display: flex; min-height: 180px; }
-        .contenido-texto { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-        .contenido-texto > p { color: #2f4f2f; font-weight: 500; line-height: 1.6; font-size: 18px; }
-        .contenido-imagen { 
-            flex: 1; border-left: 3px solid #2e7d32; display: flex; align-items: center; justify-content: center; 
-            background-color: rgba(223,255,226,.6); padding: 10px;
+        .cuerpo-tarjeta { display: flex; min-height: 220px; }
+        .contenido-texto {
+            flex: 2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+        }
+        .contenido-texto > p {
+            color: #2f4f2f;
+            font-weight: 500;
+            line-height: 1.6;
+            font-size: 17px;
+        }
+        .contenido-imagen {
+            flex: 1;
+            border-left: 3px solid #2e7d32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(223,255,226,.6);
+            padding: 10px;
         }
         .contenido-imagen img {
             max-width: 92%;
@@ -125,114 +142,209 @@
             filter: drop-shadow(0 0 10px rgba(46,125,50,0.25));
             transition: transform 0.3s ease;
         }
-        .contenido-imagen img:hover {
-            transform: scale(1.05);
+        .contenido-imagen img:hover { transform: scale(1.05); }
+
+        /* ==========================================
+           FLIPCARD ESTÁNDAR (para las dos primeras)
+           ========================================== */
+        .flip-card {
+            background: transparent;
+            width: 100%;
+            height: 160px;
+            perspective: 1000px;
+            cursor: pointer;
         }
-        .flip-card { background: transparent; width: 100%; height: 140px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform .8s; transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner, .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform .8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner,
+        .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 15px 20px; font-weight: 700;
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 12px 15px;
+            font-weight: 700;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
         }
-        .flip-card-front { 
-            background: linear-gradient(135deg, #fafffa, #dfffe2); 
-            color: #2e7d32; 
-            border: 1px solid #c8f7c5; 
-            font-size: 20px;
+        .flip-card-front {
+            background: linear-gradient(135deg, #fafffa, #dfffe2);
+            color: #2e7d32;
+            border: 1px solid #c8f7c5;
+            font-size: 16px;
             line-height: 1.4;
         }
-        /* ✅ Reverso verde pastel + LETRAS NEGRAS */
-        .flip-card-back { 
-            background: linear-gradient(135deg, #c8f7c5, #b2f0b2); 
-            color: #000000; 
-            transform: rotateY(180deg); 
-            font-size: 15px;
-            line-height: 1.6;
-            padding: 15px;
-            justify-content: center;
+        .flip-card-back {
+            background: linear-gradient(135deg, #c8f7c5, #b2f0b2);
+            color: #000000;
+            transform: rotateY(180deg);
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 10px;
             border: 1px solid #a5e9a5;
         }
+
+        /* ==========================================
+           FLIPCARD ESPECIAL — SOLO PARA "LOS 5 REINOS"
+           ========================================== */
+        .flip-card.reinos {
+            height: 220px; /* ✅ MÁS ALTA SOLO ESTA */
+        }
+        .flip-card.reinos .flip-card-back {
+            font-size: 15px; /* ✅ LETRA LEGIBLE */
+            line-height: 1.6; /* ✅ ESPACIO ENTRE LÍNEAS BIEN */
+            padding: 15px 10px; /* ✅ ESPACIO INTERNO */
+            justify-content: center;
+        }
+
         .area-dibujo {
-            border-radius: 18px; padding: 40px 25px 25px; min-height: 120px; position: relative;
+            border-radius: 18px;
+            padding: 40px 25px 25px;
+            min-height: 120px;
+            position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
-            border: 2px solid #2e7d32; box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            border: 2px solid #2e7d32;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
         }
         .area-dibujo h4 {
-            position: absolute; top: -14px; left: 25px;
+            position: absolute;
+            top: -14px;
+            left: 25px;
             background: linear-gradient(90deg, #7ed957, #43cea2);
-            padding: 5px 20px; font-size: 18px; color: white; font-weight: bold; border-radius: 20px;
+            padding: 5px 20px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            border-radius: 20px;
             font-family: 'Playfair Display', serif;
         }
-        .area-dibujo p { color: #2f4f2f; line-height: 1.7; margin-bottom: 8px; font-size: 16px; }
+        .area-dibujo p {
+            color: #2f4f2f;
+            line-height: 1.7;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
         .item-menu {
-            padding: 14px; border-radius: 12px; text-align: center; font-weight: 700; color: #2e7d32;
-            background: linear-gradient(135deg, #fafffa, #dfffe2); border: 1px solid #c8f7c5;
-            box-shadow: 0 4px 12px rgba(46,125,50,.10); transition: all .3s ease; cursor: pointer;
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            color: #2e7d32;
+            background: linear-gradient(135deg, #fafffa, #dfffe2);
+            border: 1px solid #c8f7c5;
+            box-shadow: 0 4px 12px rgba(46,125,50,.10);
+            transition: all .3s ease;
+            cursor: pointer;
         }
-        .item-menu:hover { background: linear-gradient(135deg, #7ed957, #43cea2); color: white; transform: translateY(-2px); }
+        .item-menu:hover {
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
         .boton-jugar {
-            background: linear-gradient(135deg, #7ed957, #43cea2); padding: 18px; border-radius: 50px;
-            text-align: center; font-weight: bold; font-size: 18px; color: white; cursor: pointer;
-            box-shadow: 0 8px 20px rgba(46,125,50,.30); transition: all .3s ease; margin-top: 10px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            padding: 18px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(46,125,50,.30);
+            transition: all .3s ease;
+            margin-top: 10px;
         }
-        .boton-jugar:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(46,125,50,.40); }
+        .boton-jugar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(46,125,50,.40);
+        }
+
         .boton-reproducir {
-            width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 28px; margin: 10px auto; cursor: pointer; color: white;
-            background: linear-gradient(135deg, #7ed957, #43cea2); box-shadow: 0 6px 15px rgba(46,125,50,.25); transition: all .3s ease;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 10px auto;
+            cursor: pointer;
+            color: white;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            box-shadow: 0 6px 15px rgba(46,125,50,.25);
+            transition: all .3s ease;
         }
         .boton-reproducir:hover { transform: scale(1.1); }
+
         @media (max-width: 900px) {
             .contenedor-principal { flex-direction: column; width: 92%; }
             .columna-derecha { border-left: none; padding-left: 0; border-top: 3px solid #2e7d32; padding-top: 20px; }
             .cuerpo-tarjeta { flex-direction: column; }
             .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 120px; }
+            .flip-card.reinos { height: 240px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ✅ Franja blanca sin mover nada -->
     <div class="franja-fondo"></div>
 
-    <!-- ✅ Botón y título en su posición original -->
     <a href="index.html" class="boton-regreso"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
     <h1 class="titulo-principal">🌿 CLASIFICACIÓN DE LOS SERES VIVOS 🌿</h1>
 
     <div class="contenedor-principal">
         <div class="columna-izquierda">
-            <!-- 📌 ¿Por qué los clasificamos? -->
+
+            <!-- 📌 ¿Por qué los clasificamos? → TAMAÑO NORMAL -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">📌 ¿Por qué los clasificamos?</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
-                        <p>• Sistema de agrupación + Dato Curioso</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <p>• Sistema de agrupación de los seres vivos.</p>
+                        <div class="flip-card">
                             <div class="flip-card-inner">
-                                <div class="flip-card-front">✨ Pasa el cursor o haz clic aquí ✨</div>
-                                <div class="flip-card-back">Agrupamos a los seres vivos por sus características para estudiarlos mejor. 🌍 Dato curioso: ¡Existen más de 8 millones de especies conocidas y muchas más por descubrir!</div>
+                                <div class="flip-card-front">✨ Pasa el cursor o haz clic ✨</div>
+                                <div class="flip-card-back">
+                                    Agrupamos por características para estudiarlos.
+                                    🌍 ¡Hay más de 8 millones de especies conocidas!
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="contenido-imagen">
-                        <img src="clasifica-que-es.png" alt="Diversidad de seres vivos en su hábitat">
+                        <img src="clasifica-que-es.png" alt="Diversidad de seres vivos">
                     </div>
                 </div>
             </div>
 
-            <!-- 🔍 Los 5 Reinos -->
+            <!-- 🔍 LOS 5 REINOS → SOLO ESTA ES MÁS ALTA Y AJUSTADA -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">🔍 Los 5 Reinos</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
-                        <p>• Monera, Protista, Hongos, Plantas, Animales</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <p>• Monera, Protista, Hongos, Plantas y Animales.</p>
+                        <div class="flip-card reinos">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Conoce cada reino ✨</div>
-                                <div class="flip-card-back"><strong>Monera:</strong> bacterias.<br><strong>Protista:</strong> organismos simples.<br><strong>Hongos:</strong> se alimentan de materia orgánica.<br><strong>Vegetal:</strong> fabrican su alimento.<br><strong>Animal:</strong> se mueven y comen otros seres.</div>
+                                <div class="flip-card-back">
+                                    <strong>Monera:</strong> bacterias.<br>
+                                    <strong>Protista:</strong> organismos simples.<br>
+                                    <strong>Hongos:</strong> se alimentan de materia orgánica.<br>
+                                    <strong>Vegetal:</strong> fabrican su propio alimento.<br>
+                                    <strong>Animal:</strong> se mueven y se alimentan de otros seres.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -242,34 +354,37 @@
                 </div>
             </div>
 
-            <!-- ⚡ Importancia de todos -->
+            <!-- ⚡ Importancia de todos → TAMAÑO NORMAL -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">⚡ Importancia de todos</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
-                        <p>• Beneficios y cuidado de la naturaleza</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <p>• Beneficios y cuidado de la naturaleza.</p>
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ ¿Qué aportan? ✨</div>
-                                <div class="flip-card-back">Las bacterias descomponen materia, las plantas dan oxígeno, los hongos reciclan nutrientes y los animales mantienen el equilibrio. ⚡ ¡Todos cuidamos el planeta!</div>
+                                <div class="flip-card-back">
+                                    Bacterias descomponen, plantas dan oxígeno, hongos reciclan, animales mantienen equilibrio. ⚡ ¡Cuidemos el planeta!
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="contenido-imagen">
-                        <img src="clasifica-importancia.png" alt="Cuidado de los animales y la naturaleza">
+                        <img src="clasifica-importancia.png" alt="Cuidado de la naturaleza">
                     </div>
                 </div>
             </div>
 
-            <!-- ✅ Resumen SIN la línea de dibujar -->
+            <!-- 🖍️ Resumen -->
             <div class="area-dibujo">
                 <h4>🖍️ Resumen y Esquema</h4>
-                <p>✅ <strong>Reino Monera:</strong> bacterias y organismos simples.</p>
+                <p>✅ <strong>Reino Monera:</strong> bacterias y organismos muy simples.</p>
                 <p>✅ <strong>Reino Protista:</strong> algas y amebas.</p>
                 <p>✅ <strong>Reino Hongos:</strong> mohos, setas y levaduras.</p>
-                <p>✅ <strong>Reino Vegetal y Animal:</strong> plantas, animales y su diversidad.</p>
+                <p>✅ <strong>Reino Vegetal y Animal:</strong> plantas fabrican su alimento; animales se alimentan de otros seres.</p>
             </div>
         </div>
+
         <div class="columna-derecha">
             <div class="item-menu"><div style="font-size: 36px; margin-bottom: 8px;">🌿</div>¿Qué es?</div>
             <div class="item-menu">Reino Monera</div>
@@ -277,9 +392,19 @@
             <div class="item-menu">Reino Hongos</div>
             <div class="boton-reproducir">▶</div>
             <div class="item-menu">Reino Vegetal y Animal</div>
-            <!-- ❌ Quité: Actividades y Cuestionario -->
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
+
+    <!-- ✅ JavaScript -->
+    <script>
+        const tarjetas = document.querySelectorAll('.flip-card');
+        tarjetas.forEach(function(tarjeta) {
+            tarjeta.addEventListener('click', function() {
+                this.classList.toggle('activa');
+            });
+        });
+    </script>
+
 </body>
 </html>
