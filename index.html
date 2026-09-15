@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biologia para Ninos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+  position:relative;
+  background:#f4fff4;
+  color:#173b1f;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("https://image.shutterstock.com/image-vector/biology-hand-drawn-chalk-sketches-260nw-2600893235.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  z-index:-2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(229,255,229,.9));
+  z-index:-1;
+  pointer-events:none;
+}
+
+button,
+a{
+  font-family:inherit;
+}
+
+.extras-menu{
+  position:fixed;
+  top:20px;
+  left:20px;
+  z-index:9999;
+}
+
+.extras-boton{
+  background:rgba(0,0,0,.62);
+  color:white;
+  padding:11px 16px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+  font-weight:700;
+}
+
+.extras-boton:hover,
+.extras-boton:focus{
+  background:rgba(46,125,50,.92);
+  outline:none;
+}
+
+.extras-contenido{
+  margin-top:10px;
+  display:none;
+  flex-direction:column;
+  gap:8px;
+}
+
+.extras-contenido.activo{
+  display:flex;
+}
+
+.extra-item{
+  background:white;
+  border:2px solid #2e7d32;
+  color:black;
+  font-weight:700;
+  padding:12px 16px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(46,125,50,.14);
+  cursor:pointer;
+  transition:all .3s ease;
+}
+
+.extra-item:hover{
+  background:#b9f6ca;
+  color:black;
+}
+
+.portada{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  color:white;
+  padding:96px 20px 120px;
+  position:relative;
+  overflow:hidden;
+  background:#173b1f;
+}
+
+.carousel-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:#173b1f;
+}
+
+.carousel-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity 1.5s ease, transform 7s ease;
+  background-size:cover;
+  background-position:center;
+  filter:none;
+  transform:scale(1.04);
+}
+
+.carousel-slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+.portada::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:transparent;
+  pointer-events:none;
+}
+
+.portada > *:not(.carousel-bg){
+  position:relative;
+  z-index:2;
+}
+
+.etiqueta{
+  padding:12px 25px;
+  border-radius:40px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.3);
+  font-size:14px;
+  margin-bottom:25px;
+  box-shadow:0 8px 24px rgba(0,0,0,.14);
+}
+
+.titulo{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(58px,12vw,118px);
+  line-height:.95;
+  letter-spacing:clamp(1px,.7vw,7px);
+  text-transform:uppercase;
+  background:linear-gradient(180deg,#ffffff,#d4ffd4,#7ed957,#2e7d32);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 12px 30px rgba(0,0,0,.18);
+  overflow-wrap:anywhere;
+}
+
+.subtitulo{
+  margin-top:15px;
+  font-size:clamp(20px,4vw,34px);
+  font-weight:600;
+  color:#f5fff5;
+  max-width:800px;
+  text-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+
+.boton{
+  margin-top:35px;
+  padding:16px 35px;
+  background:linear-gradient(135deg,#7ed957,#43cea2);
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 12px 28px rgba(46,125,50,.34);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.boton:hover,
+.boton:focus{
+  transform:translateY(-3px);
+  box-shadow:0 16px 34px rgba(46,125,50,.42);
+  outline:none;
+}
+
+.indice{
+  width:90%;
+  max-width:1100px;
+  margin:-70px auto 40px auto;
+  border-radius:25px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+  background:linear-gradient(135deg,rgba(223,255,226,.97),rgba(191,243,194,.97));
+  backdrop-filter:blur(8px);
+}
+
+.header-indice{
+  background:linear-gradient(90deg,#00c853,#64dd17,#43cea2);
+  padding:25px;
+  text-align:center;
+  color:white;
+}
+
+.header-indice h2{
+  font-size:42px;
+  letter-spacing:2px;
+  line-height:1;
+}
+
+.lista{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  padding:30px;
+}
+
+.flip-card{
+  background:transparent;
+  height:150px;
+  perspective:1000px;
+}
+
+.flip-card-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .8s;
+  transform-style:preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner,
+.flip-card.activa .flip-card-inner{
+  transform:rotateY(180deg);
+}
+
+.flip-card button{
+  width:100%;
+  height:100%;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  font:inherit;
+}
+
+.flip-card-front,
+.flip-card-back{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border-radius:18px;
+  backface-visibility:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:12px;
+  padding:18px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(46,125,50,.14);
+}
+
+.flip-card-front{
+  background:linear-gradient(135deg,#fafffa,#dfffe2);
+  color:#2e7d32;
+  border:1px solid #c8f7c5;
+}
+
+.flip-card-front i{
+  display:block;
+  font-size:34px;
+  margin-bottom:4px;
+}
+
+.flip-card:nth-child(1) .flip-card-front i{ color:#9b5de5; }
+.flip-card:nth-child(2) .flip-card-front i{ color:#00bbf9; }
+.flip-card:nth-child(3) .flip-card-front i{ color:#38b000; }
+.flip-card:nth-child(4) .flip-card-front i{ color:#ffd166; }
+.flip-card:nth-child(5) .flip-card-front i{ color:#ef476f; }
+.flip-card:nth-child(6) .flip-card-front i{ color:#06d6a0; }
+.flip-card:nth-child(7) .flip-card-front i{ color:#8d6e63; }
+.flip-card:nth-child(8) .flip-card-front i{ color:#118ab2; }
+
+.flip-card-back{
+  background:linear-gradient(135deg,#7ed957,#2e7d32);
+  color:white;
+  transform:rotateY(180deg);
+  line-height:1.45;
+  font-size:14px;
+}
+
+.footer{
+  width:100%;
+  margin:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:25px 40px;
+  background:linear-gradient(90deg,#43cea2,#2e7d32);
+  color:white;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+@media(max-width:900px){
+  .lista{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .extras-menu{
+    top:14px;
+    left:14px;
+  }
+
+  .lista{
+    grid-template-columns:1fr;
+    padding:22px;
+  }
+
+  .header-indice h2{
+    font-size:34px;
+  }
+
+  .footer{
+    flex-direction:column;
+    text-align:center;
+  }
+
+.hero{
+    width:100%;
+    min-height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+    background:linear-gradient(135deg,#2e7d32,#43a047,#66bb6a);
+}
+
+.hero-box{
+    width:90%;
+    max-width:1100px;
+    padding:50px 30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(10px);
+    border:2px solid rgba(255,255,255,.20);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    text-align:center;
+}
+
+.hero-box h1{
+    margin:0;
+    font-family:'Playfair Display', serif;
+    font-size:clamp(38px,5vw,70px);
+    line-height:1.15;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    background:linear-gradient(
+        to bottom,
+        #ffffff,
+        #d7ffd9,
+        #7ed957
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+
+</style>
+</style>
+</head>
+
+<body>
+ <div class="titulo-biologia">
+    
+</div>
+<div class="extras-menu">
+  <button class="extras-boton" type="button" onclick="toggleExtras()" aria-expanded="false" aria-controls="extrasContenido">
+    <span>EXTRAS</span>
+    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+  </button>
+
+  <div class="extras-contenido" id="extrasContenido">
+    <div class="extra-item">SISTEMA NERVIOSO </div>
+    <div class="extra-item">SISTEMA CIRCULATORIO</div>
+    <div class="extra-item">SISTEMA RESPIRATORIO</div>
+    <div class="extra-item">SISTEMA DIGESTIVO</div>
+    <div class="extra-item">ESQUELETO</div>
+    <div class="extra-item">MUSCULOS</div>
+  </div>
+</div>
+
+<div class="portada">
+  <div class="carousel-bg" aria-hidden="true">
+    <div class="carousel-slide active"></div>
+    <div class="carousel-slide"></div>
+    <div class="carousel-slide"></div>
+    <div class="carousel-slide"></div>
+  </div>
+
+  <div class="etiqueta">Ciencias Naturales para Ninos</div>
+  <h1 class="titulo">BIOLOGIA</h1>
+  <h2 class="subtitulo">El estudio de la vida, la naturaleza y los seres vivos</h2>
+
+  <a href="#indice" class="boton">
+    Explorar temas
+    <i class="fas fa-arrow-down" aria-hidden="true"></i>
+  </a>
+</div>
+
+<div class="indice" id="indice">
+  <div class="header-indice">
+    <h2>INDICE DE TEMAS</h2>
+  </div>
+
+  <div class="lista">
+
+    <div class="flip-card">
+<a href="sistema-nervioso.html" class="card-link">
+<div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-brain"></i><span>SISTEMAS Y PREVENCIONES</span></div>
+      <div class="flip-card-back">Cuida tu salud y aprende sobre el cuerpo humano.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="la-celula.html" class="card-link">
+     <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-dna"></i><span>LA CELULA</span></div>
+      <div class="flip-card-back">Unidad basica de la vida.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="seres-vivos.html" class="card-link">
+      <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-seedling"></i><span>LOS SERES VIVOS</span></div>
+      <div class="flip-card-back">Todo lo que tiene vida.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="materia-luzysonido.html" class="card-link">
+      <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-lightbulb"></i><span>MATERIA, LUZ Y SONIDO</span></div>
+      <div class="flip-card-back">Fenomenos de la naturaleza.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="nutricion.html" class="card-link">
+        <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-apple-whole"></i><span>NUTRICION</span></div>
+      <div class="flip-card-back">Alimentacion saludable.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="relaciondeecosistemas.html" class="card-link">
+      <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-earth-americas"></i><span>RELACION DE ECOSISTEMAS</span></div>
+      <div class="flip-card-back">Conexion entre seres vivos.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="relieves-y-biomas.html" class="card-link">
+      <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-mountain-sun"></i><span>RELIEVE Y BIOMAS</span></div>
+      <div class="flip-card-back">Naturaleza de America y Bolivia.</div>
+    </div></a></div>
+
+    <div class="flip-card">
+      <a href="climas.html" class="card-link">
+      <div class="flip-card-inner">
+      <div class="flip-card-front"><i class="fa-solid fa-cloud-sun-rain"></i><span>CLIMAS</span></div>
+      <div class="flip-card-back">Tipos de clima en America y Bolivia.</div>
+    </div></a></div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <h3>BIOLOGIA</h3>
+  <p>Irek</p>
+</div>
+
+<script>
+function toggleExtras(){
+  const menu = document.getElementById("extrasContenido");
+  const button = document.querySelector(".extras-boton");
+  const isOpen = menu.classList.toggle("activo");
+  button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+}
+
+const images = [
+  "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2024/04/plantas-interior-sansevieria-foto-shutterstock.jpg?fit=1500%2C1000&ssl=1",
+  "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1800&q=80",
+  "https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=1800&q=80",
+  "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=80",
+];
+
+const slides = document.querySelectorAll(".carousel-bg .carousel-slide");
+
+slides.forEach((slide, i) => {
+  slide.style.backgroundImage = `url('${images[i]}')`;
+});
+
+let current = 0;
+
+setInterval(() => {
+  slides[current].classList.remove("active");
+  current = (current + 1) % slides.length;
+  slides[current].classList.add("active");
+}, 7000);
+
+document.querySelectorAll(".flip-card button").forEach((button) => {
+  button.addEventListener("click", () => {
+    button.closest(".flip-card").classList.toggle("activa");
+  });
+});
+</script>
+
+</body>
+</html>

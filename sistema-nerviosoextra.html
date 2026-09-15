@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Nervioso - Biología para Niños</title>
+  <style>
+    /* ESTILO IGUAL A TU DISEÑO */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+    }
+
+    body {
+      background: #e6f9e6;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 100 100"><path fill="%23c8e6c9" d="M20,20 C30,10 50,10 60,20 C70,30 70,50 60,60 C50,70 30,70 20,60 C10,50 10,30 20,20 Z"/></svg>');
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* BOTÓN VOLVER AL INICIO */
+    .boton-volver {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .boton-volver:hover {
+      background: #388e3c;
+    }
+
+    /* ENCABEZADO PRINCIPAL */
+    .encabezado-pagina {
+      background: linear-gradient(to right, #2e7d32, #66bb6a);
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .encabezado-pagina h1 {
+      color: white;
+      font-size: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    .icono-cerebro {
+      font-size: 40px;
+    }
+
+    /* CONTENEDOR GENERAL DE COLUMNAS */
+    .contenedor-columnas {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* CAJAS DE CONTENIDO IZQUIERDA */
+    .caja-contenido {
+      background: rgba(255,255,255,0.9);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+    }
+    .caja-titulo {
+      background: linear-gradient(to right, #4caf50, #81c784);
+      color: white;
+      padding: 12px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .caja-cuerpo {
+      padding: 25px;
+      color: #1b5e20;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .aviso-interactivo {
+      text-align: center;
+      font-weight: bold;
+      color: #388e3c;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .aviso-interactivo:hover {
+      color: #1b5e20;
+    }
+
+    /* MENÚ LATERAL DERECHO */
+    .menu-lateral {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .boton-lateral {
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 12px;
+      padding: 15px 10px;
+      text-align: center;
+      color: #1b5e20;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .boton-lateral:hover {
+      background: #c8e6c9;
+      transform: translateX(-5px);
+    }
+    .boton-lateral.icono {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    /* AJUSTE PARA PANTALLAS PEQUEÑAS */
+    @media (max-width: 900px) {
+      .contenedor-columnas {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BOTÓN VOLVER -->
+  <a href="3rd.html" class="boton-volver">← Volver al inicio</a>
+
+  <!-- ENCABEZADO -->
+  <div class="encabezado-pagina">
+    <h1>
+      <span class="icono-cerebro">🧠</span>
+      SISTEMA NERVIOSO
+      <span class="icono-cerebro">🧠</span>
+    </h1>
+  </div>
+
+  <div class="contenedor-columnas">
+    <!-- COLUMNA IZQUIERDA: CONTENIDO PRINCIPAL -->
+    <div class="columna-principal">
+      <!-- CAJA 1: ¿QUÉ ES? -->
+      <div class="caja-contenido">
+        <div class="caja-titulo">
+          🌟 ¿Qué es el Sistema Nervioso?
+        </div>
+        <div class="caja-cuerpo">
+          <p>• Concepto breve + Dato Curioso</p>
+          <br>
+          <p>Es la red de control que comunica y dirige todo tu cuerpo, como una red de mensajeros ultrarrápidos ⚡</p>
+          <p>💡 Dato curioso: Los mensajes viajan a más de 400 km/h por tus nervios!</p>
+          <div class="aviso-interactivo">✨ Pasa el cursor o haz clic aquí ✨</div>
+        </div>
+      </div>
+
+      <!-- CAJA 2: PARTES PRINCIPALES -->
+      <div class="caja-contenido">
+        <div class="caja-titulo">
+          🔍 Partes Principales
+        </div>
+        <div class="caja-cuerpo">
+          <p>• Cerebro, Médula Espinal y Nervios</p>
+          <br>
+          <p>🧠 <strong>Cerebro:</strong> El centro de mando</p>
+          <p>🦴 <strong>Médula Espinal:</strong> La vía de comunicación</p>
+          <p>🕸️ <strong>Nervios:</strong> Los cables que llevan los mensajes</p>
+          <div class="aviso-interactivo">✨ Descubre cada parte ✨</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: MENÚ LATERAL -->
+    <div class="columna-lateral">
+      <div class="menu-lateral">
+        <button class="boton-lateral">
+          <div class="icono">🧠</div>
+          ¿Qué es?
+        </button>
+        <button class="boton-lateral">Partes del Sistema</button>
+        <button class="boton-lateral">Funciones</button>
+        <button class="boton-lateral">Las Neuronas</button>
+        <br>
+        <button class="boton-lateral" style="background: #c8e6c9;">¿Quieres aprender más?</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

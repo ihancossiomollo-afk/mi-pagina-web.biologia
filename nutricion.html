@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Nutrición en Animales y Plantas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            background: #90EE90;
+            color: #173b1f;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("https://image.shutterstock.com/image-vector/biology-hand-drawn-chalk-sketches-260nw-2600893235.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(144,238,144,.85));
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ✅ Franja blanca más arriba sin mover posiciones */
+        .franja-fondo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 170px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            z-index: -1;
+        }
+
+        .boton-regreso {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 10px 0 10px 5%;
+            box-shadow: 0 6px 15px rgba(46,125,50,.25);
+            transition: all .3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .boton-regreso:hover { transform: translateY(-2px); }
+
+        .titulo-principal {
+            width: 90%;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(90deg, #00c853, #228B22, #2e7d32);
+            padding: 18px;
+            text-align: center;
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 15px rgba(255,255,255,0.6);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.12);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            gap: 25px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .columna-izquierda { flex: 3; display: flex; flex-direction: column; gap: 25px; }
+        .columna-derecha { flex: 1; display: flex; flex-direction: column; gap: 20px; border-left: 3px solid #2e7d32; padding-left: 20px; }
+        .tarjeta-seccion {
+            border-radius: 18px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
+            border: 2px solid #2e7d32;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+        }
+        .encabezado-tarjeta {
+            background: linear-gradient(90deg, #7ed957, #43cea2);
+            padding: 14px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+        .cuerpo-tarjeta { display: flex; min-height: 180px; }
+        .contenido-texto { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+        .contenido-texto > p { color: #2f4f2f; font-weight: 500; line-height: 1.6; font-size: 18px; }
+        .contenido-imagen { 
+            flex: 1; border-left: 3px solid #2e7d32; display: flex; align-items: center; justify-content: center; 
+            background-color: rgba(223,255,226,.6); padding: 10px;
+        }
+        .contenido-imagen img {
+            max-width: 92%;
+            max-height: 170px;
+            object-fit: contain;
+            border-radius: 12px;
+            filter: drop-shadow(0 0 10px rgba(46,125,50,0.25));
+            transition: transform 0.3s ease;
+        }
+        .contenido-imagen img:hover {
+            transform: scale(1.05);
+        }
+        .flip-card { background: transparent; width: 100%; height: 140px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform .8s; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner, .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 15px 20px; font-weight: 700;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+        }
+        .flip-card-front { 
+            background: linear-gradient(135deg, #fafffa, #dfffe2); 
+            color: #2e7d32; 
+            border: 1px solid #c8f7c5; 
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        /* ✅ Reverso verde pastel + LETRAS NEGRAS */
+        .flip-card-back { 
+            background: linear-gradient(135deg, #c8f7c5, #b2f0b2); 
+            color: #000000; 
+            transform: rotateY(180deg); 
+            font-size: 15px;
+            line-height: 1.6;
+            padding: 15px;
+            justify-content: center;
+            border: 1px solid #a5e9a5;
+        }
+        .area-dibujo {
+            border-radius: 18px; padding: 40px 25px 25px; min-height: 120px; position: relative;
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
+            border: 2px solid #2e7d32; box-shadow: 0 8px 20px rgba(46,125,50,.14);
+        }
+        .area-dibujo h4 {
+            position: absolute; top: -14px; left: 25px;
+            background: linear-gradient(90deg, #7ed957, #43cea2);
+            padding: 5px 20px; font-size: 18px; color: white; font-weight: bold; border-radius: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        .area-dibujo p { color: #2f4f2f; line-height: 1.7; margin-bottom: 8px; font-size: 16px; }
+        .item-menu {
+            padding: 14px; border-radius: 12px; text-align: center; font-weight: 700; color: #2e7d32;
+            background: linear-gradient(135deg, #fafffa, #dfffe2); border: 1px solid #c8f7c5;
+            box-shadow: 0 4px 12px rgba(46,125,50,.10); transition: all .3s ease; cursor: pointer;
+        }
+        .item-menu:hover { background: linear-gradient(135deg, #7ed957, #43cea2); color: white; transform: translateY(-2px); }
+        .boton-jugar {
+            background: linear-gradient(135deg, #7ed957, #43cea2); padding: 18px; border-radius: 50px;
+            text-align: center; font-weight: bold; font-size: 18px; color: white; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(46,125,50,.30); transition: all .3s ease; margin-top: 10px;
+        }
+        .boton-jugar:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(46,125,50,.40); }
+        .boton-reproducir {
+            width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 28px; margin: 10px auto; cursor: pointer; color: white;
+            background: linear-gradient(135deg, #7ed957, #43cea2); box-shadow: 0 6px 15px rgba(46,125,50,.25); transition: all .3s ease;
+        }
+        .boton-reproducir:hover { transform: scale(1.1); }
+        @media (max-width: 900px) {
+            .contenedor-principal { flex-direction: column; width: 92%; }
+            .columna-derecha { border-left: none; padding-left: 0; border-top: 3px solid #2e7d32; padding-top: 20px; }
+            .cuerpo-tarjeta { flex-direction: column; }
+            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Franja blanca sin mover nada -->
+    <div class="franja-fondo"></div>
+
+    <!-- ✅ Botón y título en su posición original -->
+    <a href="index.html" class="boton-regreso"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+    <h1 class="titulo-principal">🌱 LA NUTRICIÓN EN ANIMALES Y PLANTAS 🐾</h1>
+
+    <div class="contenedor-principal">
+        <div class="columna-izquierda">
+            <!-- 📌 Materia y energía -->
+            <div class="tarjeta-seccion">
+                <div class="encabezado-tarjeta">📌 Materia y energía</div>
+                <div class="cuerpo-tarjeta">
+                    <div class="contenido-texto">
+                        <p>• Cómo obtienen lo que necesitan + Dato Curioso</p>
+                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">✨ Pasa el cursor o haz clic aquí ✨</div>
+                                <div class="flip-card-back">Las plantas producen su propio alimento; los animales lo obtienen de otros seres vivos. Ambos transforman materia y energía para vivir. ⚡ Dato curioso: ¡Toda la energía que consumimos viene originalmente del Sol!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenido-imagen">
+                        <img src="nutricion-materia.png" alt="Materia y energía en seres vivos">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🌿 Fotosíntesis y respiración -->
+            <div class="tarjeta-seccion">
+                <div class="encabezado-tarjeta">🌿 Fotosíntesis y respiración</div>
+                <div class="cuerpo-tarjeta">
+                    <div class="contenido-texto">
+                        <p>• Procesos clave en plantas y animales</p>
+                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">✨ Conoce cómo funcionan ✨</div>
+                                <div class="flip-card-back"><strong>Fotosíntesis:</strong> plantas usan luz, agua y CO₂ para hacer alimento y liberar oxígeno.<br><strong>Respiración:</strong> todos los seres usan oxígeno para obtener energía y liberar CO₂.<br>💡 Son procesos complementarios que mantienen el equilibrio.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenido-imagen">
+                        <img src="nutricion-fotosintesis.png" alt="Fotosíntesis y respiración">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔄 Cadenas y ciclos naturales -->
+            <div class="tarjeta-seccion">
+                <div class="encabezado-tarjeta">🔄 Cadenas y ciclos naturales</div>
+                <div class="cuerpo-tarjeta">
+                    <div class="contenido-texto">
+                        <p>• Alimentación y ciclos de la naturaleza</p>
+                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">✨ ¿Cómo se relacionan? ✨</div>
+                                <div class="flip-card-back"><strong>Cadenas alimentarias:</strong> orden en que se transfiere energía.<br><strong>Ciclos:</strong> del carbono y del nitrógeno reciclan elementos esenciales entre seres vivos y el medio. ♻️ Sin ellos, la vida no podría continuar.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenido-imagen">
+                        <img src="nutricion-ciclos.png" alt="Cadena trófica y ciclos naturales">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ✅ Resumen SIN la línea de dibujar -->
+            <div class="area-dibujo">
+                <h4>🖍️ Resumen y Esquema</h4>
+                <p>✅ <strong>Nutrición autótrofa:</strong> plantas y algas fabrican su alimento.</p>
+                <p>✅ <strong>Nutrición heterótrofa:</strong> animales y hongos lo obtienen de otros.</p>
+                <p>✅ <strong>Ciclos:</strong> carbono y nitrógeno son fundamentales para la vida.</p>
+            </div>
+        </div>
+        <div class="columna-derecha">
+            <div class="item-menu"><div style="font-size: 36px; margin-bottom: 8px;">⚡</div>Materia y energía</div>
+            <div class="item-menu">Fotosíntesis</div>
+            <div class="item-menu">Respiración</div>
+            <div class="item-menu">Cadenas alimentarias</div>
+            <div class="boton-reproducir">▶</div>
+            <div class="item-menu">Ciclos: Carbono y Nitrógeno</div>
+            <!-- ❌ Quité: Actividades y Cuestionario -->
+            <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Nervioso</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fondo completo de la página en verde pastel */
+        body {
+            background-color: #d7f5e3;
+            padding: 20px;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* Franja del título: ancho completo, centrado, texto con degradado */
+        .titulo-principal {
+            width: 100%;
+            background-color: #2e8b57;
+            padding: 18px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            /* Degradado de blanco a verde en el texto */
+            background: linear-gradient(to right, #ffffff, #a8e6cf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 2px rgba(46, 139, 87, 0.3);
+        }
+
+        /* Contenedor principal que ocupa todo el ancho */
+        .contenedor-principal {
+            display: flex;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .columna-izquierda {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .columna-derecha {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-left: 2px solid #2e8b57;
+            padding-left: 18px;
+        }
+
+        /* Tarjetas de sección */
+        .tarjeta-seccion {
+            border: 2px solid #2e8b57;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* Subtítulos centrados y en verde */
+        .encabezado-tarjeta {
+            background-color: #f0f9f4;
+            padding: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            color: #2e8b57;
+            border-bottom: 2px solid #2e8b57;
+        }
+
+        .cuerpo-tarjeta {
+            display: flex;
+            min-height: 160px;
+        }
+
+        .contenido-texto {
+            flex: 2;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contenido-texto > p {
+            margin-bottom: 12px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .contenido-imagen {
+            flex: 1;
+            border-left: 2px solid #2e8b57;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2e8b57;
+            background-color: #f8fdfa;
+        }
+
+        /* Tarjeta Volteable (Flip Card) */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 130px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s ease-in-out;
+            transform-style: preserve-3d;
+            box-shadow: 0 3px 8px rgba(46, 139, 87, 0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #2e8b57;
+        }
+
+        .flip-card-front {
+            background-color: #e8f5e9;
+            color: #2e8b57;
+            font-weight: 500;
+        }
+
+        .flip-card-back {
+            background-color: #2e8b57;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* Área inferior */
+        .area-dibujo {
+            border: 2px solid #2e8b57;
+            border-radius: 18px 18px 18px 0;
+            padding: 20px;
+            min-height: 150px;
+            position: relative;
+            background-color: #ffffff;
+        }
+
+        .area-dibujo h4 {
+            position: absolute;
+            top: -13px;
+            left: 22px;
+            background-color: #d7f5e3;
+            padding: 0 12px;
+            font-size: 18px;
+            color: #2e8b57;
+            font-weight: bold;
+        }
+
+        /* Menú derecho */
+        .item-menu {
+            padding: 12px;
+            border: 1px solid #2e8b57;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            background-color: #ffffff;
+            transition: background 0.2s;
+        }
+
+        .item-menu:hover {
+            background-color: #e8f5e9;
+        }
+
+        .boton-jugar {
+            background-color: #f0f9f4;
+            padding: 18px;
+            border: 2px solid #2e8b57;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .boton-jugar:hover {
+            background-color: #2e8b57;
+            color: white;
+        }
+
+        .boton-reproducir {
+            width: 65px;
+            height: 65px;
+            border: 2px solid #2e8b57;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin: 10px auto;
+            cursor: pointer;
+            color: #2e8b57;
+            background-color: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .boton-reproducir:hover {
+            background-color: #2e8b57;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título principal -->
+    <div class="titulo-principal">Sistema Nervioso</div>
+
+    <div class="contenedor-principal">
+        <!-- Columna Izquierda -->
+        <div class="columna-izquierda">
+
+            <!-- Tarjeta Caja Torácica -->
+            <div class="tarjeta-seccion">
+                <div class="encabezado-tarjeta">Caja Torácica</div>
+                <div class="cuerpo-tarjeta">
+                    <div class="contenido-texto">
+                        <p>• Concepto breve + Dato Curioso</p>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    Haz clic o pasa el cursor → Concepto breve
+                                </div>
+                                <div class="flip-card-back">
+                                    Es la estructura ósea que protege órganos vitales como el corazón y pulmones. 🧠 Dato curioso: Tiene 24 costillas en total.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenido-imagen">Imagen</div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Cráneo -->
+            <div class="tarjeta-seccion">
+                <div class="encabezado-tarjeta">Cráneo</div>
+                <div class="cuerpo-tarjeta">
+                    <div class="contenido-texto">
+                        <p>• Concepto breve + Dato Curioso</p>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    Haz clic o pasa el cursor → Concepto breve
+                                </div>
+                                <div class="flip-card-back">
+                                    Es el conjunto de huesos que protege el cerebro. 🧠 Dato curioso: Al nacer sus huesos no están unidos completamente.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenido-imagen">Imagen Flipcard</div>
+                </div>
+            </div>
+
+            <!-- Área de dibujo -->
+            <div class="area-dibujo">
+                <h4>Sistema Nervioso</h4>
+            </div>
+
+        </div>
+
+        <!-- Columna Derecha (Menú) -->
+        <div class="columna-derecha">
+            <div class="item-menu">
+                <div style="font-size: 42px; margin-bottom: 10px;">👤</div>
+                Huesos
+            </div>
+            <div class="item-menu">Concepto General</div>
+            <div class="item-menu">Aprende más Ordeo</div>
+            <div class="boton-reproducir">▶</div>
+            <div class="item-menu">Te gustaría aprender más</div>
+            <div class="boton-jugar">Juega aquí</div>
+        </div>
+    </div>
+
+</body>
+</html>
