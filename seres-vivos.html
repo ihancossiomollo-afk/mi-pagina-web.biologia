@@ -34,7 +34,6 @@
             z-index: -1;
             pointer-events: none;
         }
-
         .franja-fondo {
             position: absolute;
             top: 0;
@@ -45,7 +44,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             z-index: -1;
         }
-
         .boton-regreso {
             display: inline-flex;
             align-items: center;
@@ -56,16 +54,15 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            margin: 10px 0 10px 5%;
+            margin: 10px 0 10px 3%;
             box-shadow: 0 6px 15px rgba(46,125,50,.25);
             transition: all .3s ease;
             position: relative;
             z-index: 1;
         }
         .boton-regreso:hover { transform: translateY(-2px); }
-
         .titulo-principal {
-            width: 90%;
+            width: 94%;
             margin: 0 auto 30px auto;
             background: linear-gradient(90deg, #00c853, #228B22, #2e7d32);
             padding: 18px;
@@ -81,19 +78,31 @@
             position: relative;
             z-index: 1;
         }
-
         .contenedor-principal {
             display: flex;
-            gap: 25px;
-            width: 90%;
-            max-width: 1200px;
+            gap: 20px;
+            width: 94%;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            align-items: flex-start;
         }
-        .columna-izquierda { flex: 3; display: flex; flex-direction: column; gap: 25px; }
-        .columna-derecha { flex: 1; display: flex; flex-direction: column; gap: 20px; border-left: 3px solid #2e7d32; padding-left: 20px; }
-
+        /* ✅ CONCEPTOS → 60% */
+        .columna-izquierda { 
+            width: calc(60% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+        }
+        /* ✅ BOTONES + VIDEO → 40% */
+        .columna-derecha { 
+            width: calc(40% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            border-left: 3px solid #2e7d32; 
+            padding-left: 20px; 
+        }
         .tarjeta-seccion {
             border-radius: 18px;
             overflow: hidden;
@@ -132,25 +141,24 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(223,255,226,.6);
-            padding: 10px;
+            padding: 12px;
         }
         .contenido-imagen img {
-            max-width: 92%;
-            max-height: 170px;
+            max-width: 98%;
+            max-height: 200px;
             object-fit: contain;
             border-radius: 12px;
             filter: drop-shadow(0 0 10px rgba(46,125,50,0.25));
             transition: transform 0.3s ease;
         }
         .contenido-imagen img:hover { transform: scale(1.05); }
-
         /* ==========================================
-           FLIPCARD ESTÁNDAR (para las dos primeras)
+           FLIPCARD ESTÁNDAR
            ========================================== */
         .flip-card {
             background: transparent;
             width: 100%;
-            height: 160px;
+            height: 140px;
             perspective: 1000px;
             cursor: pointer;
         }
@@ -193,121 +201,105 @@
             padding: 10px;
             border: 1px solid #a5e9a5;
         }
-
         /* ==========================================
-           FLIPCARD ESPECIAL — SOLO PARA "LOS 5 REINOS"
+           FLIPCARD ESPECIAL — LOS 5 REINOS
            ========================================== */
-        .flip-card.reinos {
-            height: 220px; /* ✅ MÁS ALTA SOLO ESTA */
-        }
+        .flip-card.reinos { height: 200px; }
         .flip-card.reinos .flip-card-back {
-            font-size: 15px; /* ✅ LETRA LEGIBLE */
-            line-height: 1.6; /* ✅ ESPACIO ENTRE LÍNEAS BIEN */
-            padding: 15px 10px; /* ✅ ESPACIO INTERNO */
+            font-size: 15px;
+            line-height: 1.6;
+            padding: 15px 10px;
             justify-content: center;
         }
-
+        /* ✅ RESUMEN PERFECTAMENTE CENTRADO */
         .area-dibujo {
             border-radius: 18px;
-            padding: 40px 25px 25px;
+            padding: 30px 25px;
             min-height: 120px;
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
             border: 2px solid #2e7d32;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
         }
         .area-dibujo h4 {
-            position: absolute;
-            top: -14px;
-            left: 25px;
             background: linear-gradient(90deg, #7ed957, #43cea2);
-            padding: 5px 20px;
-            font-size: 18px;
             color: white;
-            font-weight: bold;
+            padding: 8px 25px;
             border-radius: 20px;
+            font-size: 18px;
             font-family: 'Playfair Display', serif;
+            display: inline-block;
+            margin-bottom: 15px;
         }
         .area-dibujo p {
             color: #2f4f2f;
-            line-height: 1.7;
-            margin-bottom: 6px;
-            font-size: 16px;
+            line-height: 1.8;
+            font-size: 17px;
         }
-
         .item-menu {
-            padding: 14px;
+            padding: 14px 16px;
             border-radius: 12px;
-            text-align: center;
-            font-weight: 700;
-            color: #2e7d32;
             background: linear-gradient(135deg, #fafffa, #dfffe2);
             border: 1px solid #c8f7c5;
             box-shadow: 0 4px 12px rgba(46,125,50,.10);
             transition: all .3s ease;
-            cursor: pointer;
+        }
+        .item-menu h5 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .item-menu p {
+            color: #2f4f2f;
+            font-size: 14px;
+            line-height: 1.5;
         }
         .item-menu:hover {
-            background: linear-gradient(135deg, #7ed957, #43cea2);
-            color: white;
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46,125,50,.15);
         }
-
         .boton-jugar {
             background: linear-gradient(135deg, #7ed957, #43cea2);
-            padding: 18px;
+            padding: 16px;
             border-radius: 50px;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 17px;
             color: white;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(46,125,50,.30);
             transition: all .3s ease;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         .boton-jugar:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 25px rgba(46,125,50,.40);
         }
-
-        .boton-reproducir {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin: 10px auto;
-            cursor: pointer;
-            color: white;
-            background: linear-gradient(135deg, #7ed957, #43cea2);
-            box-shadow: 0 6px 15px rgba(46,125,50,.25);
-            transition: all .3s ease;
-        }
-        .boton-reproducir:hover { transform: scale(1.1); }
-
+        .boton-reproducir { display: none; }
         @media (max-width: 900px) {
-            .contenedor-principal { flex-direction: column; width: 92%; }
+            .contenedor-principal { flex-direction: column; width: 94%; margin: 0 auto; }
+            .columna-izquierda,
+            .columna-derecha { width: 100%; }
             .columna-derecha { border-left: none; padding-left: 0; border-top: 3px solid #2e7d32; padding-top: 20px; }
-            .cuerpo-tarjeta { flex-direction: column; }
-            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 120px; }
-            .flip-card.reinos { height: 240px; }
+            .cuerpo-tarjeta { flex-direction: column; min-height: auto; }
+            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 180px; }
+            .flip-card.reinos { height: 220px; }
+            .caja-video video { height: 200px; }
         }
     </style>
 </head>
 <body>
-
     <div class="franja-fondo"></div>
-
     <a href="index.html" class="boton-regreso"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
     <h1 class="titulo-principal">🌿 CLASIFICACIÓN DE LOS SERES VIVOS 🌿</h1>
-
     <div class="contenedor-principal">
         <div class="columna-izquierda">
-
-            <!-- 📌 ¿Por qué los clasificamos? → TAMAÑO NORMAL -->
+            <!-- 📌 ¿Por qué los clasificamos? -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">📌 ¿Por qué los clasificamos?</div>
                 <div class="cuerpo-tarjeta">
@@ -328,8 +320,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 🔍 LOS 5 REINOS → SOLO ESTA ES MÁS ALTA Y AJUSTADA -->
+            <!-- 🔍 LOS 5 REINOS -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">🔍 Los 5 Reinos</div>
                 <div class="cuerpo-tarjeta">
@@ -353,8 +344,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ⚡ Importancia de todos → TAMAÑO NORMAL -->
+            <!-- ⚡ Importancia de todos -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">⚡ Importancia de todos</div>
                 <div class="cuerpo-tarjeta">
@@ -374,37 +364,47 @@
                     </div>
                 </div>
             </div>
-
             <!-- 🖍️ Resumen -->
             <div class="area-dibujo">
-                <h4>🖍️ Resumen y Esquema</h4>
+                <h4>📝 Resumen y Esquema</h4>
                 <p>✅ <strong>Reino Monera:</strong> bacterias y organismos muy simples.</p>
                 <p>✅ <strong>Reino Protista:</strong> algas y amebas.</p>
                 <p>✅ <strong>Reino Hongos:</strong> mohos, setas y levaduras.</p>
                 <p>✅ <strong>Reino Vegetal y Animal:</strong> plantas fabrican su alimento; animales se alimentan de otros seres.</p>
             </div>
         </div>
-
         <div class="columna-derecha">
-            <div class="item-menu"><div style="font-size: 36px; margin-bottom: 8px;">🌿</div>¿Qué es?</div>
-            <div class="item-menu">Reino Monera</div>
-            <div class="item-menu">Reino Protista</div>
-            <div class="item-menu">Reino Hongos</div>
-            <div class="boton-reproducir">▶</div>
-            <div class="item-menu">Reino Vegetal y Animal</div>
+            <div class="item-menu">
+                <h5>🌿 ¿Qué es?</h5>
+                <p>Sistema para agrupar y reconocer los seres vivos según sus características.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🔴 Reino Monera</h5>
+                <p>Organismos muy simples como las bacterias.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🟡 Reino Protista</h5>
+                <p>Algas, amebas y organismos sencillos.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🟢 Reino Hongos</h5>
+                <p>Mohos, setas y levaduras.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🌱 Reino Vegetal y Animal</h5>
+                <p>Plantas producen alimento; animales se alimentan de otros.</p>
+            </div>
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
 
-    <!-- ✅ JavaScript -->
-    <script>
-        const tarjetas = document.querySelectorAll('.flip-card');
-        tarjetas.forEach(function(tarjeta) {
-            tarjeta.addEventListener('click', function() {
-                this.classList.toggle('activa');
-            });
-        });
-    </script>
-
+<script>
+const tarjetas = document.querySelectorAll('.flip-card');
+tarjetas.forEach(function(tarjeta) {
+    tarjeta.addEventListener('click', function() {
+        this.classList.toggle('activa');
+    });
+});
+</script>
 </body>
 </html>

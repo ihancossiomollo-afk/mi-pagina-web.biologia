@@ -34,7 +34,6 @@
             z-index: -1;
             pointer-events: none;
         }
-
         .franja-fondo {
             position: absolute;
             top: 0;
@@ -45,7 +44,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             z-index: -1;
         }
-
         .boton-regreso {
             display: inline-flex;
             align-items: center;
@@ -56,16 +54,15 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            margin: 10px 0 10px 5%;
+            margin: 10px 0 10px 3%;
             box-shadow: 0 6px 15px rgba(46,125,50,.25);
             transition: all .3s ease;
             position: relative;
             z-index: 1;
         }
         .boton-regreso:hover { transform: translateY(-2px); }
-
         .titulo-principal {
-            width: 90%;
+            width: 94%;
             margin: 0 auto 30px auto;
             background: linear-gradient(90deg, #00c853, #228B22, #2e7d32);
             padding: 18px;
@@ -81,19 +78,31 @@
             position: relative;
             z-index: 1;
         }
-
         .contenedor-principal {
             display: flex;
-            gap: 25px;
-            width: 90%;
-            max-width: 1200px;
+            gap: 20px;
+            width: 94%;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            align-items: flex-start;
         }
-        .columna-izquierda { flex: 3; display: flex; flex-direction: column; gap: 25px; }
-        .columna-derecha { flex: 1; display: flex; flex-direction: column; gap: 20px; border-left: 3px solid #2e7d32; padding-left: 20px; }
-
+        /* ✅ CONCEPTOS → 60% */
+        .columna-izquierda { 
+            width: calc(60% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+        }
+        /* ✅ BOTONES + VIDEO → 40% */
+        .columna-derecha { 
+            width: calc(40% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            border-left: 3px solid #2e7d32; 
+            padding-left: 20px; 
+        }
         .tarjeta-seccion {
             border-radius: 18px;
             overflow: hidden;
@@ -110,7 +119,7 @@
             color: white;
             font-family: 'Playfair Display', serif;
         }
-        .cuerpo-tarjeta { display: flex; min-height: 180px; }
+        .cuerpo-tarjeta { display: flex; min-height: 220px; }
         .contenido-texto {
             flex: 2;
             padding: 20px;
@@ -132,21 +141,18 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(223,255,226,.6);
-            padding: 10px;
+            padding: 12px;
         }
+        /* ✅ IMÁGENES MÁS GRANDES */
         .contenido-imagen img {
-            max-width: 92%;
-            max-height: 170px;
+            max-width: 98%;
+            max-height: 200px;
             object-fit: contain;
             border-radius: 12px;
             filter: drop-shadow(0 0 10px rgba(46,125,50,0.25));
             transition: transform 0.3s ease;
         }
         .contenido-imagen img:hover { transform: scale(1.05); }
-
-        /* ==========================================
-           FLIPCARD ESTÁNDAR (primera y tercera)
-           ========================================== */
         .flip-card {
             background: transparent;
             width: 100%;
@@ -193,121 +199,125 @@
             padding: 15px;
             border: 1px solid #a5e9a5;
         }
-
-        /* ==========================================
-           FLIPCARD ESPECIAL — SOLO "PARTES PRINCIPALES"
-           ========================================== */
-        .flip-card.partes {
-            height: 200px; /* ✅ MÁS ALTA SOLO ESTA */
-        }
+        .flip-card.partes { height: 200px; }
         .flip-card.partes .flip-card-back {
-            font-size: 16px; /* ✅ LETRA LEGIBLE */
-            line-height: 1.7; /* ✅ ESPACIO ENTRE LÍNEAS BIEN */
-            padding: 15px 10px; /* ✅ ESPACIO INTERNO */
-            justify-content: center;
+            font-size: 16px;
+            line-height: 1.7;
+            padding: 15px 10px;
         }
-
+        /* ✅ RESUMEN PERFECTAMENTE CENTRADO */
         .area-dibujo {
             border-radius: 18px;
-            padding: 40px 25px 25px;
+            padding: 30px 25px;
             min-height: 120px;
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
             border: 2px solid #2e7d32;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
         }
         .area-dibujo h4 {
-            position: absolute;
-            top: -14px;
-            left: 25px;
             background: linear-gradient(90deg, #7ed957, #43cea2);
-            padding: 5px 20px;
-            font-size: 18px;
             color: white;
-            font-weight: bold;
+            padding: 8px 25px;
             border-radius: 20px;
+            font-size: 18px;
             font-family: 'Playfair Display', serif;
+            display: inline-block;
+            margin-bottom: 15px;
         }
         .area-dibujo p {
             color: #2f4f2f;
-            line-height: 1.7;
-            margin-bottom: 8px;
-            font-size: 16px;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* ✅ VIDEO */
+        .caja-video {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid #2e7d32;
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
+            padding: 12px;
+            width: 100%;
+        }
+        .caja-video h4 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-family: 'Playfair Display', serif;
+        }
+        .caja-video video {
+            width: 100%;
+            height: 240px;
+            border-radius: 12px;
+            display: block;
         }
 
         .item-menu {
-            padding: 14px;
+            padding: 14px 16px;
             border-radius: 12px;
-            text-align: center;
-            font-weight: 700;
-            color: #2e7d32;
             background: linear-gradient(135deg, #fafffa, #dfffe2);
             border: 1px solid #c8f7c5;
             box-shadow: 0 4px 12px rgba(46,125,50,.10);
             transition: all .3s ease;
-            cursor: pointer;
+        }
+        .item-menu h5 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .item-menu p {
+            color: #2f4f2f;
+            font-size: 14px;
+            line-height: 1.5;
         }
         .item-menu:hover {
-            background: linear-gradient(135deg, #7ed957, #43cea2);
-            color: white;
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46,125,50,.15);
         }
-
         .boton-jugar {
             background: linear-gradient(135deg, #7ed957, #43cea2);
-            padding: 18px;
+            padding: 16px;
             border-radius: 50px;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 17px;
             color: white;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(46,125,50,.30);
             transition: all .3s ease;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         .boton-jugar:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 25px rgba(46,125,50,.40);
         }
-
-        .boton-reproducir {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin: 10px auto;
-            cursor: pointer;
-            color: white;
-            background: linear-gradient(135deg, #7ed957, #43cea2);
-            box-shadow: 0 6px 15px rgba(46,125,50,.25);
-            transition: all .3s ease;
-        }
-        .boton-reproducir:hover { transform: scale(1.1); }
-
+        .boton-reproducir { display: none; }
         @media (max-width: 900px) {
-            .contenedor-principal { flex-direction: column; width: 92%; }
+            .contenedor-principal { flex-direction: column; width: 94%; margin: 0 auto; }
+            .columna-izquierda,
+            .columna-derecha { width: 100%; }
             .columna-derecha { border-left: none; padding-left: 0; border-top: 3px solid #2e7d32; padding-top: 20px; }
-            .cuerpo-tarjeta { flex-direction: column; }
-            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 120px; }
+            .cuerpo-tarjeta { flex-direction: column; min-height: auto; }
+            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 180px; }
             .flip-card.partes { height: 220px; }
+            .caja-video video { height: 200px; }
         }
     </style>
 </head>
 <body>
-
     <div class="franja-fondo"></div>
-
     <a href="index.html" class="boton-regreso"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
     <h1 class="titulo-principal">🧠 SISTEMA NERVIOSO 🧠</h1>
-
     <div class="contenedor-principal">
         <div class="columna-izquierda">
-
-            <!-- 📌 ¿Qué es el Sistema Nervioso? → TAMAÑO NORMAL -->
+            <!-- 📌 ¿Qué es el Sistema Nervioso? -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">📌 ¿Qué es el Sistema Nervioso?</div>
                 <div class="cuerpo-tarjeta">
@@ -327,8 +337,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 🔍 PARTES PRINCIPALES → SOLO ESTA ES MÁS ALTA Y AJUSTADA -->
+            <!-- 🔍 Partes Principales -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">🔍 Partes Principales</div>
                 <div class="cuerpo-tarjeta">
@@ -351,8 +360,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ⚡ Funciones del Sistema Nervioso → TAMAÑO NORMAL -->
+            <!-- ⚡ Funciones del Sistema Nervioso -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">⚡ Funciones del Sistema Nervioso</div>
                 <div class="cuerpo-tarjeta">
@@ -372,28 +380,45 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 🖍️ Resumen -->
+            <!-- 🖍️ RESUMEN CENTRADO -->
             <div class="area-dibujo">
-                <h4>🖍️ Resumen y Esquema</h4>
-                <p><strong>El Sistema Nervioso</strong> se divide en dos grandes partes:</p>
-                <p>✅ <strong>Sistema Nervioso Central:</strong> formado por el cerebro, cerebelo y médula espinal.</p>
-                <p>✅ <strong>Sistema Nervioso Periférico:</strong> formado por todos los nervios del cuerpo.</p>
+                <h4>📝 Resumen y Esquema</h4>
+                <p><strong>El Sistema Nervioso se divide en dos grandes partes:</strong><br><br>
+                ✅ <strong>Sistema Nervioso Central:</strong> formado por el cerebro, cerebelo y médula espinal.<br>
+                ✅ <strong>Sistema Nervioso Periférico:</strong> formado por todos los nervios del cuerpo.</p>
             </div>
         </div>
-
         <div class="columna-derecha">
-            <div class="item-menu"><div style="font-size: 36px; margin-bottom: 8px;">🧠</div>¿Qué es?</div>
-            <div class="item-menu">Partes del Sistema</div>
-            <div class="item-menu">Funciones</div>
-            <div class="item-menu">Las Neuronas</div>
-            <div class="boton-reproducir">▶</div>
-            <div class="item-menu">¿Quieres aprender más?</div>
+            <div class="item-menu">
+                <h5>🧠 ¿Qué es?</h5>
+                <p>Es el sistema encargado de recibir, procesar y enviar señales que controlan todas las funciones del cuerpo y la mente.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🔍 Partes del Sistema</h5>
+                <p>Se divide en Sistema Nervioso Central (cerebro, cerebelo y médula) y Sistema Nervioso Periférico (nervios).</p>
+            </div>
+            <div class="item-menu">
+                <h5>⚡ Funciones</h5>
+                <p>Controla movimientos, sentidos, pensamientos, memoria, emociones y regula las funciones del cuerpo.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🔬 Las Neuronas</h5>
+                <p>Son las células especializadas que transmiten información mediante impulsos eléctricos. Son la unidad básica del sistema nervioso.</p>
+            </div>
+            <div class="caja-video">
+                <h4>🎥 Video explicativo</h4>
+                <video controls>
+                    <source src="video-sistema-nervioso.mp4" type="video/mp4">
+                    Tu navegador no puede reproducir este video.
+                </video>
+            </div>
+            <div class="item-menu">
+                <h5>💡 ¿Quieres aprender más?</h5>
+                <p>Investiga cómo proteger tu sistema nervioso: buena alimentación, descanso y evitar sustancias dañinas.</p>
+            </div>
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
-
-    <!-- ✅ JavaScript limpio al final -->
     <script>
         const tarjetas = document.querySelectorAll('.flip-card');
         tarjetas.forEach(function(tarjeta) {
@@ -402,6 +427,5 @@
             });
         });
     </script>
-
 </body>
 </html>

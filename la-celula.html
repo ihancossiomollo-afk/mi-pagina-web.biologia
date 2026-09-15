@@ -34,8 +34,6 @@
             z-index: -1;
             pointer-events: none;
         }
-
-        /* ✅ Franja blanca más arriba sin mover posiciones */
         .franja-fondo {
             position: absolute;
             top: 0;
@@ -46,7 +44,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             z-index: -1;
         }
-
         .boton-regreso {
             display: inline-flex;
             align-items: center;
@@ -57,16 +54,15 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            margin: 10px 0 10px 5%;
+            margin: 10px 0 10px 3%;
             box-shadow: 0 6px 15px rgba(46,125,50,.25);
             transition: all .3s ease;
             position: relative;
             z-index: 1;
         }
         .boton-regreso:hover { transform: translateY(-2px); }
-
         .titulo-principal {
-            width: 90%;
+            width: 94%;
             margin: 0 auto 30px auto;
             background: linear-gradient(90deg, #00c853, #228B22, #2e7d32);
             padding: 18px;
@@ -82,18 +78,29 @@
             position: relative;
             z-index: 1;
         }
-
         .contenedor-principal {
             display: flex;
-            gap: 25px;
-            width: 90%;
-            max-width: 1200px;
+            gap: 20px;
+            width: 94%;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            align-items: flex-start;
         }
-        .columna-izquierda { flex: 3; display: flex; flex-direction: column; gap: 25px; }
-        .columna-derecha { flex: 1; display: flex; flex-direction: column; gap: 20px; border-left: 3px solid #2e7d32; padding-left: 20px; }
+        .columna-izquierda { 
+            width: calc(60% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+        }
+        .columna-derecha { 
+            width: calc(40% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            border-left: 3px solid #2e7d32; 
+            padding-left: 20px; 
+        }
         .tarjeta-seccion {
             border-radius: 18px;
             overflow: hidden;
@@ -110,98 +117,176 @@
             color: white;
             font-family: 'Playfair Display', serif;
         }
-        .cuerpo-tarjeta { display: flex; min-height: 180px; }
-        .contenido-texto { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-        .contenido-texto > p { color: #2f4f2f; font-weight: 500; line-height: 1.6; font-size: 18px; }
-        .contenido-imagen { 
-            flex: 1; border-left: 3px solid #2e7d32; display: flex; align-items: center; justify-content: center; 
-            background-color: rgba(223,255,226,.6); padding: 10px;
+        .cuerpo-tarjeta { display: flex; min-height: 220px; }
+        .contenido-texto {
+            flex: 2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+        .contenido-texto > p {
+            color: #2f4f2f;
+            font-weight: 500;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .contenido-imagen {
+            flex: 1;
+            border-left: 3px solid #2e7d32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(223,255,226,.6);
+            padding: 12px;
         }
         .contenido-imagen img {
-            max-width: 92%;
-            max-height: 170px;
+            max-width: 98%;
+            max-height: 200px;
             object-fit: contain;
             border-radius: 12px;
             filter: drop-shadow(0 0 10px rgba(46,125,50,0.25));
             transition: transform 0.3s ease;
         }
-        .contenido-imagen img:hover {
-            transform: scale(1.05);
+        .contenido-imagen img:hover { transform: scale(1.05); }
+        .flip-card {
+            background: transparent;
+            width: 100%;
+            height: 140px;
+            perspective: 1000px;
+            cursor: pointer;
         }
-        .flip-card { background: transparent; width: 100%; height: 140px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform .8s; transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner, .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform .8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner,
+        .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 15px 20px; font-weight: 700;
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 12px 15px;
+            font-weight: 700;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
         }
-        .flip-card-front { 
-            background: linear-gradient(135deg, #fafffa, #dfffe2); 
-            color: #2e7d32; 
-            border: 1px solid #c8f7c5; 
+        .flip-card-front {
+            background: linear-gradient(135deg, #fafffa, #dfffe2);
+            color: #2e7d32;
+            border: 1px solid #c8f7c5;
             font-size: 20px;
             line-height: 1.4;
         }
-        /* ✅ Reverso verde pastel + LETRAS NEGRAS */
-        .flip-card-back { 
-            background: linear-gradient(135deg, #c8f7c5, #b2f0b2); 
-            color: #000000; 
-            transform: rotateY(180deg); 
+        .flip-card-back {
+            background: linear-gradient(135deg, #c8f7c5, #b2f0b2);
+            color: #000000;
+            transform: rotateY(180deg);
             font-size: 15px;
             line-height: 1.6;
             padding: 15px;
-            justify-content: center;
             border: 1px solid #a5e9a5;
         }
+        .flip-card.partes { height: 200px; }
+        .flip-card.partes .flip-card-back {
+            font-size: 16px;
+            line-height: 1.7;
+            padding: 15px 10px;
+        }
         .area-dibujo {
-            border-radius: 18px; padding: 40px 25px 25px; min-height: 120px; position: relative;
+            border-radius: 18px;
+            padding: 30px 25px;
+            min-height: 120px;
+            position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
-            border: 2px solid #2e7d32; box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            border: 2px solid #2e7d32;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
         }
         .area-dibujo h4 {
-            position: absolute; top: -14px; left: 25px;
             background: linear-gradient(90deg, #7ed957, #43cea2);
-            padding: 5px 20px; font-size: 18px; color: white; font-weight: bold; border-radius: 20px;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 18px;
             font-family: 'Playfair Display', serif;
+            display: inline-block;
+            margin-bottom: 15px;
         }
-        .area-dibujo p { color: #2f4f2f; line-height: 1.7; margin-bottom: 8px; font-size: 16px; }
+        .area-dibujo p {
+            color: #2f4f2f;
+            line-height: 1.8;
+            font-size: 17px;
+        }
         .item-menu {
-            padding: 14px; border-radius: 12px; text-align: center; font-weight: 700; color: #2e7d32;
-            background: linear-gradient(135deg, #fafffa, #dfffe2); border: 1px solid #c8f7c5;
-            box-shadow: 0 4px 12px rgba(46,125,50,.10); transition: all .3s ease; cursor: pointer;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fafffa, #dfffe2);
+            border: 1px solid #c8f7c5;
+            box-shadow: 0 4px 12px rgba(46,125,50,.10);
+            transition: all .3s ease;
         }
-        .item-menu:hover { background: linear-gradient(135deg, #7ed957, #43cea2); color: white; transform: translateY(-2px); }
+        .item-menu h5 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .item-menu p {
+            color: #2f4f2f;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .item-menu:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46,125,50,.15);
+        }
         .boton-jugar {
-            background: linear-gradient(135deg, #7ed957, #43cea2); padding: 18px; border-radius: 50px;
-            text-align: center; font-weight: bold; font-size: 18px; color: white; cursor: pointer;
-            box-shadow: 0 8px 20px rgba(46,125,50,.30); transition: all .3s ease; margin-top: 10px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            padding: 16px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 17px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(46,125,50,.30);
+            transition: all .3s ease;
+            margin-top: 5px;
         }
-        .boton-jugar:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(46,125,50,.40); }
-        .boton-reproducir {
-            width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 28px; margin: 10px auto; cursor: pointer; color: white;
-            background: linear-gradient(135deg, #7ed957, #43cea2); box-shadow: 0 6px 15px rgba(46,125,50,.25); transition: all .3s ease;
+        .boton-jugar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(46,125,50,.40);
         }
-        .boton-reproducir:hover { transform: scale(1.1); }
+        .boton-reproducir { display: none; }
         @media (max-width: 900px) {
-            .contenedor-principal { flex-direction: column; width: 92%; }
+            .contenedor-principal { flex-direction: column; width: 94%; margin: 0 auto; }
+            .columna-izquierda,
+            .columna-derecha { width: 100%; }
             .columna-derecha { border-left: none; padding-left: 0; border-top: 3px solid #2e7d32; padding-top: 20px; }
-            .cuerpo-tarjeta { flex-direction: column; }
-            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 120px; }
+            .cuerpo-tarjeta { flex-direction: column; min-height: auto; }
+            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 180px; }
+            .flip-card.partes { height: 220px; }
+            .caja-video video { height: 200px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ✅ Franja blanca sin mover nada -->
     <div class="franja-fondo"></div>
-
-    <!-- ✅ Botón y título en su posición original -->
     <a href="index.html" class="boton-regreso"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
     <h1 class="titulo-principal">🔬 LA CÉLULA 🔬</h1>
-
     <div class="contenedor-principal">
         <div class="columna-izquierda">
             <!-- 📌 ¿Qué es la Célula? -->
@@ -210,7 +295,7 @@
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
                         <p>• Unidad básica de todo ser vivo + Dato Curioso</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Pasa el cursor o haz clic aquí ✨</div>
                                 <div class="flip-card-back">Es la unidad más pequeña con vida: todos los seres vivos están formados por células. 🧬 Dato curioso: ¡El cuerpo humano tiene más de 30 billones de células!</div>
@@ -222,14 +307,13 @@
                     </div>
                 </div>
             </div>
-
             <!-- 🔍 Estructura y Clasificación -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">🔍 Estructura y Clasificación</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
                         <p>• Partes y tipos de células</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <div class="flip-card partes">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Descubre cada parte ✨</div>
                                 <div class="flip-card-back"><strong>Partes:</strong> membrana, citoplasma y material genético.<br><strong>Tipos:</strong> procariotas (sin núcleo definido) y eucariotas (con núcleo).<br><strong>Organismos:</strong> unicelulares o pluricelulares.</div>
@@ -241,14 +325,13 @@
                     </div>
                 </div>
             </div>
-
             <!-- ⚡ Niveles de Organización -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">⚡ Niveles de Organización</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
                         <p>• Desde la célula hasta los ecosistemas</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Conoce la escala ✨</div>
                                 <div class="flip-card-back">Biológica: Célula → Tejido → Órgano → Sistema → Organismo.<br>Ecológica: Individuo → Población → Comunidad → Ecosistema → Biosfera.</div>
@@ -260,25 +343,46 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ✅ Resumen SIN la línea de dibujar -->
+            <!-- 🖍️ RESUMEN CENTRADO -->
             <div class="area-dibujo">
-                <h4>🖍️ Resumen y Esquema</h4>
-                <p>✅ <strong>Célula:</strong> unidad básica de la vida.</p>
-                <p>✅ <strong>Procariota:</strong> sin núcleo (ej: bacterias).</p>
-                <p>✅ <strong>Eucariota:</strong> con núcleo (animales, plantas, hongos).</p>
+                <h4>📝 Resumen y Esquema</h4>
+                <p><strong>La Célula se clasifica en dos grandes tipos:</strong><br><br>
+                ✅ <strong>Célula Procariota:</strong> sin núcleo definido (ej: bacterias).<br>
+                ✅ <strong>Célula Eucariota:</strong> con núcleo definido (animales, plantas, hongos).</p>
             </div>
         </div>
         <div class="columna-derecha">
-            <div class="item-menu"><div style="font-size: 36px; margin-bottom: 8px;">🔬</div>¿Qué es?</div>
-            <div class="item-menu">Funciones</div>
-            <div class="item-menu">Estructura</div>
-            <div class="item-menu">Clasificación</div>
-            <div class="boton-reproducir">▶</div>
-            <div class="item-menu">Niveles de organización</div>
-            <!-- ❌ Quité: Actividades y Cuestionario -->
+            <div class="item-menu">
+                <h5>🔬 ¿Qué es?</h5>
+                <p>Es la unidad básica, estructural y funcional de todos los seres vivos.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🔍 Estructura</h5>
+                <p>Está formada por membrana, citoplasma y material genético.</p>
+            </div>
+            <div class="item-menu">
+                <h5>⚡ Funciones</h5>
+                <p>Nutrición, relación con el entorno y reproducción.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🧬 Clasificación</h5>
+                <p>Procariotas (sin núcleo) y Eucariotas (con núcleo).</p>
+            </div>
+            <div class="item-menu">
+                <h5>📊 Niveles de Organización</h5>
+                <p>De la célula hasta el organismo y los ecosistemas.</p>
+            </div>
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
+
+<script>
+const tarjetas = document.querySelectorAll('.flip-card');
+tarjetas.forEach(function(tarjeta) {
+    tarjeta.addEventListener('click', function() {
+        this.classList.toggle('activa');
+    });
+});
+</script>
 </body>
 </html>
