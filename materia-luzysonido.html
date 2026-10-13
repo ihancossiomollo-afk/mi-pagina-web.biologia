@@ -34,8 +34,6 @@
             z-index: -1;
             pointer-events: none;
         }
-
-        /* ✅ Franja blanca más arriba sin mover posiciones */
         .franja-fondo {
             position: absolute;
             top: 0;
@@ -46,7 +44,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             z-index: -1;
         }
-
         .boton-regreso {
             display: inline-flex;
             align-items: center;
@@ -57,16 +54,15 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            margin: 10px 0 10px 5%;
+            margin: 10px 0 10px 3%;
             box-shadow: 0 6px 15px rgba(46,125,50,.25);
             transition: all .3s ease;
             position: relative;
             z-index: 1;
         }
         .boton-regreso:hover { transform: translateY(-2px); }
-
         .titulo-principal {
-            width: 90%;
+            width: 94%;
             margin: 0 auto 30px auto;
             background: linear-gradient(90deg, #00c853, #228B22, #2e7d32);
             padding: 18px;
@@ -82,18 +78,29 @@
             position: relative;
             z-index: 1;
         }
-
         .contenedor-principal {
             display: flex;
-            gap: 25px;
-            width: 90%;
-            max-width: 1200px;
+            gap: 20px;
+            width: 94%;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            align-items: flex-start;
         }
-        .columna-izquierda { flex: 3; display: flex; flex-direction: column; gap: 25px; }
-        .columna-derecha { flex: 1; display: flex; flex-direction: column; gap: 20px; border-left: 3px solid #2e7d32; padding-left: 20px; }
+        .columna-izquierda { 
+            width: calc(60% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+        }
+        .columna-derecha { 
+            width: calc(40% - 10px); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            border-left: 3px solid #2e7d32; 
+            padding-left: 20px; 
+        }
         .tarjeta-seccion {
             border-radius: 18px;
             overflow: hidden;
@@ -110,87 +117,190 @@
             color: white;
             font-family: 'Playfair Display', serif;
         }
-        .cuerpo-tarjeta { display: flex; min-height: 180px; }
-        .contenido-texto { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-        .contenido-texto > p { color: #2f4f2f; font-weight: 500; line-height: 1.6; font-size: 18px; }
-        .contenido-imagen { 
-            flex: 1; border-left: 3px solid #2e7d32; display: flex; align-items: center; justify-content: center; 
-            background-color: rgba(223,255,226,.6); font-size: 40px;
+        .cuerpo-tarjeta { display: flex; min-height: 220px; }
+        .contenido-texto {
+            flex: 2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
         }
-        .flip-card { background: transparent; width: 100%; height: 140px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform .8s; transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner, .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
+        .contenido-texto > p {
+            color: #2f4f2f;
+            font-weight: 500;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .contenido-imagen {
+            flex: 1;
+            border-left: 3px solid #2e7d32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(223,255,226,.6);
+            padding: 12px;
+            font-size: 50px;
+        }
+        /* === CAJA DE VIDEO - MISMO FORMATO QUE LAS OTRAS === */
+        .caja-video {
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
+            border: 2px solid #2e7d32;
+            border-radius: 18px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            width: 100%;
+        }
+        .caja-video h4 {
+            font-family: 'Playfair Display', serif;
+            color: #2e7d32;
+            margin-bottom: 12px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .caja-video video {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .flip-card {
+            background: transparent;
+            width: 100%;
+            height: 140px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .flip-card.grande { height: 180px; }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform .8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner,
+        .flip-card.activa .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 15px 20px; font-weight: 700;
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 12px 15px;
+            font-weight: 700;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
         }
-        .flip-card-front { 
-            background: linear-gradient(135deg, #fafffa, #dfffe2); 
-            color: #2e7d32; 
-            border: 1px solid #c8f7c5; 
+        .flip-card-front {
+            background: linear-gradient(135deg, #fafffa, #dfffe2);
+            color: #2e7d32;
+            border: 1px solid #c8f7c5;
             font-size: 20px;
             line-height: 1.4;
         }
-        /* ✅ Reverso verde pastel + LETRAS NEGRAS */
-        .flip-card-back { 
-            background: linear-gradient(135deg, #c8f7c5, #b2f0b2); 
-            color: #000000; 
-            transform: rotateY(180deg); 
+        .flip-card-back {
+            background: linear-gradient(135deg, #c8f7c5, #b2f0b2);
+            color: #000000;
+            transform: rotateY(180deg);
             font-size: 15px;
             line-height: 1.6;
             padding: 15px;
-            justify-content: center;
             border: 1px solid #a5e9a5;
         }
         .area-dibujo {
-            border-radius: 18px; padding: 40px 25px 25px; min-height: 120px; position: relative;
+            border-radius: 18px;
+            padding: 30px 25px;
+            min-height: 120px;
+            position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
-            border: 2px solid #2e7d32; box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            border: 2px solid #2e7d32;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            margin-top: 25px;
+            width: 100%;
         }
         .area-dibujo h4 {
-            position: absolute; top: -14px; left: 25px;
             background: linear-gradient(90deg, #7ed957, #43cea2);
-            padding: 5px 20px; font-size: 18px; color: white; font-weight: bold; border-radius: 20px;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 18px;
             font-family: 'Playfair Display', serif;
+            display: inline-block;
+            margin-bottom: 15px;
         }
-        .area-dibujo p { color: #2f4f2f; line-height: 1.7; margin-bottom: 8px; font-size: 16px; }
+        .area-dibujo p {
+            color: #2f4f2f;
+            line-height: 1.8;
+            font-size: 17px;
+        }
         .item-menu {
-            padding: 14px; border-radius: 12px; text-align: center; font-weight: 700; color: #2e7d32;
-            background: linear-gradient(135deg, #fafffa, #dfffe2); border: 1px solid #c8f7c5;
-            box-shadow: 0 4px 12px rgba(46,125,50,.10); transition: all .3s ease; cursor: pointer;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fafffa, #dfffe2);
+            border: 1px solid #c8f7c5;
+            box-shadow: 0 4px 12px rgba(46,125,50,.10);
+            transition: all .3s ease;
         }
-        .item-menu:hover { background: linear-gradient(135deg, #7ed957, #43cea2); color: white; transform: translateY(-2px); }
+        .item-menu h5 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .item-menu p {
+            color: #2f4f2f;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .item-menu:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46,125,50,.15);
+        }
         .boton-jugar {
-            background: linear-gradient(135deg, #7ed957, #43cea2); padding: 18px; border-radius: 50px;
-            text-align: center; font-weight: bold; font-size: 18px; color: white; cursor: pointer;
-            box-shadow: 0 8px 20px rgba(46,125,50,.30); transition: all .3s ease; margin-top: 10px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            padding: 16px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 17px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(46,125,50,.30);
+            transition: all .3s ease;
+            margin-top: 5px;
         }
-        .boton-jugar:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(46,125,50,.40); }
-        .boton-reproducir {
-            width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 28px; margin: 10px auto; cursor: pointer; color: white;
-            background: linear-gradient(135deg, #7ed957, #43cea2); box-shadow: 0 6px 15px rgba(46,125,50,.25); transition: all .3s ease;
+        .boton-jugar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(46,125,50,.40);
         }
-        .boton-reproducir:hover { transform: scale(1.1); }
         @media (max-width: 900px) {
-            .contenedor-principal { flex-direction: column; width: 92%; }
+            .contenedor-principal { flex-direction: column; width: 94%; margin: 0 auto; }
+            .columna-izquierda,
+            .columna-derecha { width: 100%; }
             .columna-derecha { border-left: none; padding-left: 0; border-top: 3px solid #2e7d32; padding-top: 20px; }
-            .cuerpo-tarjeta { flex-direction: column; }
-            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 100px; }
+            .cuerpo-tarjeta { flex-direction: column; min-height: auto; }
+            .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 120px; }
+            .flip-card.grande { height: 200px; }
+            .caja-video video { max-width: 280px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ✅ Franja blanca sin mover nada -->
     <div class="franja-fondo"></div>
-
-    <!-- ✅ Botón y título en su posición original -->
     <a href="index.html" class="boton-regreso"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+    
     <h1 class="titulo-principal">💡 MATERIA, LUZ Y SONIDO 🔊</h1>
-
+    
     <div class="contenedor-principal">
         <div class="columna-izquierda">
             <!-- 📌 ¿Qué es la Materia? -->
@@ -199,69 +309,105 @@
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
                         <p>• Todo lo que ocupa lugar + Estados + Dato Curioso</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Pasa el cursor o haz clic aquí ✨</div>
-                                <div class="flip-card-back">Es todo lo que tiene masa y ocupa un lugar en el espacio. Se encuentra en estado sólido, líquido o gaseoso. ⚛️ Dato curioso: ¡La materia está formada por átomos invisibles a simple vista!</div>
+                                <div class="flip-card-back">
+                                    Es todo lo que tiene <strong>masa</strong> y ocupa un <strong>lugar en el espacio</strong>. Se presenta en tres estados: sólido, líquido y gaseoso. ⚛️ ¡Está formada por átomos invisibles a simple vista!
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="contenido-imagen">⚛️</div>
                 </div>
             </div>
-
             <!-- 💡 La Luz -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">💡 La Luz</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
                         <p>• Fuentes, propiedades y comportamiento</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <div class="flip-card grande">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Descubre sus características ✨</div>
-                                <div class="flip-card-back">Es una forma de energía que viaja muy rápido. Puede ser natural (Sol) o artificial (foco). Se refleja, se refracta y permite ver los colores. ⚡ Es la energía más rápida del universo.</div>
+                                <div class="flip-card-back">
+                                    Es una forma de <strong>energía</strong> que viaja en línea recta y a gran velocidad. Puede ser natural (Sol) o artificial (foco). Se refleja, se refracta y nos permite ver los colores. ⚡ Es la energía más rápida del universo.
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="contenido-imagen">💡</div>
                 </div>
             </div>
-
             <!-- 🔊 El Sonido -->
             <div class="tarjeta-seccion">
                 <div class="encabezado-tarjeta">🔊 El Sonido</div>
                 <div class="cuerpo-tarjeta">
                     <div class="contenido-texto">
                         <p>• ¿Cómo se produce y viaja?</p>
-                        <div class="flip-card" onclick="this.classList.toggle('activa')">
+                        <div class="flip-card grande">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">✨ Conoce cómo funciona ✨</div>
-                                <div class="flip-card-back">Se produce por vibraciones que viajan a través del aire, agua o sólidos. No puede viajar en el vacío. Tiene tono, volumen y timbre. 🎵 Viaja mucho más lento que la luz.</div>
+                                <div class="flip-card-back">
+                                    Se produce por <strong>vibraciones</strong> que necesitan un medio material para viajar (aire, agua, sólidos). No se propaga en el vacío. Tiene tono, volumen y timbre. 🎵 Viaja mucho más lento que la luz.
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="contenido-imagen">🔊</div>
                 </div>
             </div>
-
-            <!-- ✅ Resumen SIN la línea de dibujar -->
+            <!-- 🖍️ RESUMEN -->
             <div class="area-dibujo">
-                <h4>🖍️ Resumen y Esquema</h4>
-                <p>✅ <strong>Materia:</strong> tiene masa y volumen; estados: sólido, líquido, gas.</p>
-                <p>✅ <strong>Luz:</strong> energía luminosa, se propaga en línea recta y a gran velocidad.</p>
-                <p>✅ <strong>Sonido:</strong> energía que se transmite por vibraciones; necesita un medio material.</p>
+                <h4>📝 Resumen y Esquema</h4>
+                <p><strong>Tres formas fundamentales de la naturaleza:</strong><br><br>
+                ✅ <strong>Materia:</strong> tiene masa y volumen. Estados: sólido, líquido y gaseoso.<br>
+                ✅ <strong>Luz:</strong> energía luminosa, viaja en línea recta y a gran velocidad.<br>
+                ✅ <strong>Sonido:</strong> energía por vibraciones, necesita un medio para propagarse.</p>
             </div>
         </div>
         <div class="columna-derecha">
-            <div class="item-menu"><div style="font-size: 36px; margin-bottom: 8px;">⚛️</div>¿Qué es la Materia?</div>
-            <div class="item-menu">Estados de la Materia</div>
-            <div class="item-menu">La Luz</div>
-            <div class="item-menu">El Sonido</div>
-            <div class="boton-reproducir">▶</div>
-            <div class="item-menu">Propiedades</div>
-            <!-- ❌ Quité: Actividades y Cuestionario -->
+            <div class="item-menu">
+                <h5>⚛️ ¿Qué es la Materia?</h5>
+                <p>Todo lo que tiene masa y ocupa un lugar. Se divide en sólido, líquido y gas.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🌊 Estados de la Materia</h5>
+                <p>Sólido: forma fija. Líquido: toma la forma del recipiente. Gaseoso: se expande.</p>
+            </div>
+            <div class="item-menu">
+                <h5>☀️ La Luz</h5>
+                <p>Se propaga en línea recta. Se refleja y se refracta. No necesita medio material.</p>
+            </div>
+            <div class="item-menu">
+                <h5>🎵 El Sonido</h5>
+                <p>Se transmite por vibraciones. Viaja más rápido en sólidos que en el aire. No existe en el vacío.</p>
+            </div>
+            <div class="item-menu">
+                <h5>⚖️ Luz vs Sonido</h5>
+                <p>La luz es mucho más rápida. La luz no necesita medio; el sonido sí. La luz viaja por el vacío.</p>
+            </div>
+            <div class="item-menu">
+                <h5>💡 ¿Sabías que...?</h5>
+                <p>Cuando ves un relámpago y luego escuchas el trueno, la diferencia de tiempo muestra que la luz es mucho más rápida.</p>
+            </div>
+            <!-- 🎬 VIDEO - MISMO FORMATO QUE LAS OTRAS PÁGINAS -->
+            <div class="caja-video">
+                <h4><i class="fas fa-film"></i> Video explicativo</h4>
+                <video src="video-materia.mp4" controls preload="metadata">
+                    Tu navegador no puede reproducir este video.
+                </video>
+            </div>
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
+<script>
+const tarjetas = document.querySelectorAll('.flip-card');
+tarjetas.forEach(function(tarjeta) {
+    tarjeta.addEventListener('click', function() {
+        this.classList.toggle('activa');
+    });
+});
+</script>
 </body>
 </html>

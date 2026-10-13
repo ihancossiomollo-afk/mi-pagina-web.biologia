@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biografía - Jenny Arellano Ponce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            background: #f4fff4;
+            color: #173b1f;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("https://image.shutterstock.com/image-vector/biology-hand-drawn-chalk-sketches-260nw-2600893235.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(229,255,229,.9));
+            z-index: -1;
+            pointer-events: none;
+        }
+        a {
+            font-family: inherit;
+            text-decoration: none;
+        }
+        .boton-regreso {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 25px 0 20px 3%;
+            box-shadow: 0 12px 28px rgba(46,125,50,.34);
+            transition: transform .25s ease, box-shadow .25s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .boton-regreso:hover, .boton-regreso:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(46,125,50,.42);
+            outline: none;
+        }
+        .titulo-pagina {
+            width: 94%;
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(90deg, #00c853, #64dd17, #43cea2);
+            padding: 20px 30px;
+            text-align: center;
+            font-size: clamp(32px, 6vw, 52px);
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            color: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            position: relative;
+            z-index: 1;
+        }
+        .contenedor-pagina {
+            width: 94%;
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+        .marco-esquema {
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            background: linear-gradient(135deg, rgba(223,255,226,.97), rgba(191,243,194,.97));
+            backdrop-filter: blur(8px);
+            padding: 40px 30px;
+            min-height: 720px;
+        }
+        .encabezado-esquema {
+            background: linear-gradient(90deg, #00c853, #64dd17, #43cea2);
+            padding: 18px;
+            text-align: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 14px;
+            margin-bottom: 30px;
+        }
+        .foto-lateral {
+            position: absolute;
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        .foto-lateral img {
+            width: 300px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+        .contenido-derecha {
+            margin-left: 350px;
+            position: relative;
+            z-index: 3;
+        }
+        .caja {
+            background: white;
+            border: 3px solid #2e7d32;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            transition: transform .3s ease;
+        }
+        .caja:hover {
+            transform: translateX(5px);
+        }
+        .caja h4 {
+            color: #2e7d32;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 17px;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .caja p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #2f4f2f;
+        }
+        .caja.frase {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-style: dashed;
+        }
+        @media (max-width: 900px) {
+            .marco-esquema {
+                padding: 25px;
+                min-height: auto;
+            }
+            .foto-lateral {
+                position: static;
+                transform: none;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+            .foto-lateral img {
+                width: 250px;
+            }
+            .contenido-derecha {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="boton-regreso">
+        <i class="fas fa-arrow-left"></i> Volver al Inicio
+    </a>
+
+    <h1 class="titulo-pagina">💚 BIOGRAFÍA 💚</h1>
+
+    <div class="contenedor-pagina">
+        <div class="marco-esquema">
+            <div class="encabezado-esquema"></div>
+
+            <!-- Foto a la izquierda -->
+            <div class="foto-lateral">
+                <img src="jenny.png" alt="Jenny Arellano Ponce">
+            </div>
+
+            <!-- Contenido a la derecha -->
+            <div class="contenido-derecha">
+                <div class="caja">
+                    <h4>👩‍🏫 Datos Personales</h4>
+                    <p><strong>Nombre:</strong> Jenny Arellano Ponce<br>
+                    <strong>Edad:</strong> 41 años</p>
+                </div>
+
+                <div class="caja">
+                    <h4>🏫 Trabajo</h4>
+                    <p>Trabaja en el <strong>Colegio Postel Primaria</strong>, donde tiene el privilegio de acompañar a sus estudiantes de <strong>sexto grado</strong> en su camino de aprendizaje cada día. Se dedica con vocación a enseñar y guiar a sus alumnos con paciencia y cariño.</p>
+                </div>
+
+                <div class="caja">
+                    <h4>💛 Su Corazón</h4>
+                    <p>Ama profundamente a sus estudiantes. Para ella no son solo alumnos: son una parte muy especial de su vida. Dice que cada uno tiene un brillo único y verlos progresar es su mayor alegría y motivación para seguir enseñando.</p>
+                </div>
+
+                <div class="caja frase">
+                    <h4>✨ Mensaje de la Profesora Jenny</h4>
+                    <p style="font-style: italic; font-weight: 500;">"Queridos estudiantes, nunca dejen de soñar ni de aprender. El estudio es la llave que abrirá todas las puertas que deseen cruzar. Cada esfuerzo que hacen hoy construye el futuro brillante que merecen. Yo creo en ustedes y los quiero con todo mi corazón. ¡Sigan adelante, que pueden lograr todo lo que se propongan!"</p>
+                    <p style="text-align: right; margin-top: 10px; font-weight: bold;">— Jenny Arellano Ponce</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

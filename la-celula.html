@@ -150,6 +150,32 @@
             transition: transform 0.3s ease;
         }
         .contenido-imagen img:hover { transform: scale(1.05); }
+        /* === CAJA DE VIDEO - TAMAÑO EXACTO COMO EN LA IMAGEN === */
+        .caja-video {
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
+            border: 2px solid #2e7d32;
+            border-radius: 18px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            width: 100%;
+        }
+        .caja-video h4 {
+            font-family: 'Playfair Display', serif;
+            color: #2e7d32;
+            margin-bottom: 12px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .caja-video video {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
         .flip-card {
             background: transparent;
             width: 100%;
@@ -211,7 +237,7 @@
             border: 2px solid #2e7d32;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
             text-align: center;
-            margin: 0 auto;
+            margin-top: 25px;
             width: 100%;
         }
         .area-dibujo h4 {
@@ -279,7 +305,7 @@
             .cuerpo-tarjeta { flex-direction: column; min-height: auto; }
             .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 180px; }
             .flip-card.partes { height: 220px; }
-            .caja-video video { height: 200px; }
+            .caja-video video { max-width: 280px; }
         }
     </style>
 </head>
@@ -343,7 +369,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 🖍️ RESUMEN CENTRADO -->
+            <!-- 🖍️ RESUMEN Y ESQUEMA - DE VUELTA ✅ -->
             <div class="area-dibujo">
                 <h4>📝 Resumen y Esquema</h4>
                 <p><strong>La Célula se clasifica en dos grandes tipos:</strong><br><br>
@@ -372,10 +398,16 @@
                 <h5>📊 Niveles de Organización</h5>
                 <p>De la célula hasta el organismo y los ecosistemas.</p>
             </div>
+            <!-- 🎬 VIDEO - TAMAÑO Y POSICIÓN IGUAL QUE EN TU FOTO -->
+            <div class="caja-video">
+                <h4><i class="fas fa-film"></i> Video explicativo</h4>
+                <video src="celula-video.mp4" controls preload="metadata">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
-
 <script>
 const tarjetas = document.querySelectorAll('.flip-card');
 tarjetas.forEach(function(tarjeta) {

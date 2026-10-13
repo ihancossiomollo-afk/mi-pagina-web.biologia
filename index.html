@@ -44,7 +44,6 @@ button,
 a{
   font-family:inherit;
 }
-
 /* ✅ BOTÓN EXTRAS — ESQUINA IZQUIERDA ARRIBA */
 .extras-menu{
   position:fixed;
@@ -91,12 +90,12 @@ a{
   box-shadow:0 6px 18px rgba(46,125,50,.14);
   cursor:pointer;
   transition:all .3s ease;
+  text-decoration:none;
 }
 .extra-item:hover{
   background:#b9f6ca;
   color:black;
 }
-
 /* ✅ ESCUDO FIJO — ESQUINA DERECHA SUPERIOR */
 .escudo{
   position:fixed;
@@ -113,7 +112,6 @@ a{
   height:auto;
   object-fit:contain;
 }
-
 .portada{
   min-height:100vh;
   display:flex;
@@ -351,28 +349,27 @@ a{
 </style>
 </head>
 <body>
-
-<!-- ✅ BOTÓN EXTRAS — ESQUINA IZQUIERDA ARRIBA -->
+<!-- ✅ BOTÓN EXTRAS MODIFICADO -->
 <div class="extras-menu">
   <button class="extras-boton" type="button" onclick="toggleExtras()" aria-expanded="false" aria-controls="extrasContenido">
     <span>EXTRAS</span>
     <i class="fas fa-chevron-down" aria-hidden="true"></i>
   </button>
   <div class="extras-contenido" id="extrasContenido">
-    <div class="extra-item">SISTEMA NERVIOSO </div>
-    <div class="extra-item">SISTEMA CIRCULATORIO</div>
-    <div class="extra-item">SISTEMA RESPIRATORIO</div>
-    <div class="extra-item">SISTEMA DIGESTIVO</div>
-    <div class="extra-item">ESQUELETO</div>
-    <div class="extra-item">MUSCULOS</div>
+    <a href="primer.sistema.nervioso.html" class="extra-item">SISTEMA NERVIOSO</a>
+    <a href="primer.celula.animal.html" class="extra-item">CÉLULA ANIMAL</a>
+    <a href="primer.vegetal.html" class="extra-item">CÉLULA VEGETAL</a>
+    <a href="primer.procariota.html" class="extra-item">CÉLULA PROCARIOTA Y EUCARIOTA</a>
+    <a href="primer.reino.html" class="extra-item">LOS 5 REINOS</a>
+    <a href="primer.fotosin.html" class="extra-item">LA FOTOSÍNTESIS</a>
+    <a href="primer.relieve.html" class="extra-item">RELIEVES DE BOLIVIA</a>
+    <a href="biografia.html" class="extra-item">BIOGRAFÍA</a>
   </div>
 </div>
-
 <!-- ✅ ESCUDO — ESQUINA DERECHA SUPERIOR FIJO -->
 <div class="escudo">
   <img src="deco-flotante.png" alt="Escudo">
 </div>
-
 <div class="portada">
   <div class="carousel-bg" aria-hidden="true">
     <div class="carousel-slide active"></div>
@@ -380,8 +377,8 @@ a{
     <div class="carousel-slide"></div>
     <div class="carousel-slide"></div>
   </div>
-  <div class="etiqueta">Ciencias Naturales para Ninos</div>
-  <h1 class="titulo">BIOLOGIA</h1>
+  <div class="etiqueta">Ciencias Naturales para Niños</div>
+  <h1 class="titulo">BIOLOGÍA</h1>
   <h2 class="subtitulo">El estudio de la vida, la naturaleza y los seres vivos</h2>
   <a href="#indice" class="boton">
     Explorar temas
@@ -390,7 +387,7 @@ a{
 </div>
 <div class="indice" id="indice">
   <div class="header-indice">
-    <h2>INDICE DE TEMAS</h2>
+    <h2>ÍNDICE DE TEMAS</h2>
   </div>
   <div class="lista">
     <div class="flip-card">
@@ -404,8 +401,8 @@ a{
     <div class="flip-card">
       <a href="la-celula.html" class="card-link">
         <div class="flip-card-inner">
-          <div class="flip-card-front"><i class="fa-solid fa-dna"></i><span>LA CELULA</span></div>
-          <div class="flip-card-back">Unidad basica de la vida.</div>
+          <div class="flip-card-front"><i class="fa-solid fa-dna"></i><span>LA CÉLULA</span></div>
+          <div class="flip-card-back">Unidad básica de la vida.</div>
         </div>
       </a>
     </div>
@@ -421,23 +418,23 @@ a{
       <a href="materia-luzysonido.html" class="card-link">
         <div class="flip-card-inner">
           <div class="flip-card-front"><i class="fa-solid fa-lightbulb"></i><span>MATERIA, LUZ Y SONIDO</span></div>
-          <div class="flip-card-back">Fenomenos de la naturaleza.</div>
+          <div class="flip-card-back">Fenómenos de la naturaleza.</div>
         </div>
       </a>
     </div>
     <div class="flip-card">
       <a href="nutricion.html" class="card-link">
         <div class="flip-card-inner">
-          <div class="flip-card-front"><i class="fa-solid fa-apple-whole"></i><span>NUTRICION</span></div>
-          <div class="flip-card-back">Alimentacion saludable.</div>
+          <div class="flip-card-front"><i class="fa-solid fa-apple-whole"></i><span>NUTRICIÓN</span></div>
+          <div class="flip-card-back">Alimentación saludable.</div>
         </div>
       </a>
     </div>
     <div class="flip-card">
       <a href="relaciondeecosistemas.html" class="card-link">
         <div class="flip-card-inner">
-          <div class="flip-card-front"><i class="fa-solid fa-earth-americas"></i><span>RELACION DE ECOSISTEMAS</span></div>
-          <div class="flip-card-back">Conexion entre seres vivos.</div>
+          <div class="flip-card-front"><i class="fa-solid fa-earth-americas"></i><span>RELACIÓN DE ECOSISTEMAS</span></div>
+          <div class="flip-card-back">Conexión entre seres vivos.</div>
         </div>
       </a>
     </div>
@@ -445,7 +442,7 @@ a{
       <a href="relieves-y-biomas.html" class="card-link">
         <div class="flip-card-inner">
           <div class="flip-card-front"><i class="fa-solid fa-mountain-sun"></i><span>RELIEVE Y BIOMAS</span></div>
-          <div class="flip-card-back">Naturaleza de America y Bolivia.</div>
+          <div class="flip-card-back">Naturaleza de América y Bolivia.</div>
         </div>
       </a>
     </div>
@@ -453,17 +450,16 @@ a{
       <a href="climas.html" class="card-link">
         <div class="flip-card-inner">
           <div class="flip-card-front"><i class="fa-solid fa-cloud-sun-rain"></i><span>CLIMAS</span></div>
-          <div class="flip-card-back">Tipos de clima en America y Bolivia.</div>
+          <div class="flip-card-back">Tipos de clima en América y Bolivia.</div>
         </div>
       </a>
     </div>
   </div>
 </div>
 <div class="footer">
-  <h3>BIOLOGIA</h3>
-  <p>Irek</p>
+  <h3>CIENCIAS NATURALES</h3>
+  <p>SANTILLANA</p>
 </div>
-
 <script>
 function toggleExtras(){
   const menu = document.getElementById("extrasContenido");
@@ -471,7 +467,6 @@ function toggleExtras(){
   const isOpen = menu.classList.toggle("activo");
   button.setAttribute("aria-expanded", isOpen ? "true" : "false");
 }
-
 const images = [
   "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2024/04/plantas-interior-sansevieria-foto-shutterstock.jpg?fit=1500%2C1000&ssl=1",
   "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1800&q=80",

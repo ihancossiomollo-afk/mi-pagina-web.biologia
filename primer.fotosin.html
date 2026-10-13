@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Fotosíntesis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            background: #f4fff4;
+            color: #173b1f;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("https://image.shutterstock.com/image-vector/biology-hand-drawn-chalk-sketches-260nw-2600893235.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(229,255,229,.9));
+            z-index: -1;
+            pointer-events: none;
+        }
+        a {
+            font-family: inherit;
+            text-decoration: none;
+        }
+        .boton-regreso {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 25px 0 20px 3%;
+            box-shadow: 0 12px 28px rgba(46,125,50,.34);
+            transition: transform .25s ease, box-shadow .25s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .boton-regreso:hover, .boton-regreso:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(46,125,50,.42);
+            outline: none;
+        }
+        .titulo-pagina {
+            width: 94%;
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(90deg, #00c853, #64dd17, #43cea2);
+            padding: 20px 30px;
+            text-align: center;
+            font-size: clamp(32px, 6vw, 52px);
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            color: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            position: relative;
+            z-index: 1;
+        }
+        .contenedor-pagina {
+            width: 94%;
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+        .marco-esquema {
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            background: linear-gradient(135deg, rgba(223,255,226,.97), rgba(191,243,194,.97));
+            backdrop-filter: blur(8px);
+            padding: 40px 30px;
+            min-height: 720px;
+        }
+        .encabezado-esquema {
+            background: linear-gradient(90deg, #00c853, #64dd17, #43cea2);
+            padding: 18px;
+            text-align: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 14px;
+            margin-bottom: 30px;
+        }
+        .imagen-central {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+        .imagen-central img {
+            max-width: 430px;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .caja {
+            position: absolute;
+            background: white;
+            border: 3px solid #2e7d32;
+            border-radius: 16px;
+            padding: 18px 20px;
+            width: 220px;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            z-index: 3;
+            transition: transform .3s ease;
+        }
+        .caja:hover {
+            transform: translateY(-3px);
+        }
+        .caja h4 {
+            color: #2e7d32;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 17px;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .caja p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #2f4f2f;
+        }
+        .caja-definicion {
+            top: 20px;
+            left: 20px;
+        }
+        .caja-elementos {
+            top: 20px;
+            right: 20px;
+        }
+        .caja-proceso {
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .caja-resultado {
+            bottom: 20px;
+            left: 20px;
+        }
+        .caja-importancia {
+            bottom: 20px;
+            right: 20px;
+        }
+        @media (max-width: 900px) {
+            .marco-esquema {
+                padding: 30px;
+                min-height: auto;
+            }
+            .caja {
+                position: static;
+                width: 100%;
+                margin: 12px 0;
+            }
+            .imagen-central {
+                position: static;
+                transform: none;
+                margin: 25px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="boton-regreso">
+        <i class="fas fa-arrow-left"></i> Volver al Inicio
+    </a>
+
+    <h1 class="titulo-pagina">🌿 LA FOTOSÍNTESIS 🌿</h1>
+
+    <div class="contenedor-pagina">
+        <div class="marco-esquema">
+            <div class="encabezado-esquema"></div>
+
+            <div class="imagen-central">
+                <img src="fotosin.png" alt="La Fotosíntesis">
+            </div>
+
+            <div class="caja caja-definicion">
+                <h4>📖 ¿Qué es?</h4>
+                <p>Es el proceso por el cual las plantas transforman la energía del sol en alimento. Gracias a esto crecen y nos dan oxígeno.</p>
+            </div>
+
+            <div class="caja caja-elementos">
+                <h4>☀️ Elementos</h4>
+                <p>Necesita: luz solar, agua que absorbe por las raíces y dióxido de carbono del aire. La clorofila capta la energía del sol.</p>
+            </div>
+
+            <div class="caja caja-proceso">
+                <h4>🔄 El Proceso</h4>
+                <p>La clorofila atrapa la luz. Con esa energía convierte el agua y el CO₂ en glucosa (alimento) y libera oxígeno al ambiente.</p>
+            </div>
+
+            <div class="caja caja-resultado">
+                <h4>🍎 Resultado</h4>
+                <p>Produce glucosa que la planta usa para crecer y almacenar energía. Libera oxígeno, vital para los seres vivos.</p>
+            </div>
+
+            <div class="caja caja-importancia">
+                <h4>💚 Importancia</h4>
+                <p>Es la base de la vida: da alimento a las plantas y oxígeno a todos. Regula el clima y limpia el aire.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

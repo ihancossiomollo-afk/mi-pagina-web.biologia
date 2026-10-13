@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Célula Vegetal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            background: #f4fff4;
+            color: #173b1f;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("https://image.shutterstock.com/image-vector/biology-hand-drawn-chalk-sketches-260nw-2600893235.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(229,255,229,.9));
+            z-index: -1;
+            pointer-events: none;
+        }
+        a {
+            font-family: inherit;
+            text-decoration: none;
+        }
+        /* Botón Volver al Inicio */
+        .boton-regreso {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #7ed957, #43cea2);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 25px 0 20px 3%;
+            box-shadow: 0 12px 28px rgba(46,125,50,.34);
+            transition: transform .25s ease, box-shadow .25s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .boton-regreso:hover, .boton-regreso:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(46,125,50,.42);
+            outline: none;
+        }
+        /* Título Principal */
+        .titulo-pagina {
+            width: 94%;
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(90deg, #00c853, #64dd17, #43cea2);
+            padding: 20px 30px;
+            text-align: center;
+            font-size: clamp(32px, 6vw, 52px);
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            color: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            position: relative;
+            z-index: 1;
+        }
+        /* Contenedor Principal */
+        .contenedor-pagina {
+            width: 94%;
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+        /* Marco del Esquema */
+        .marco-esquema {
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            background: linear-gradient(135deg, rgba(223,255,226,.97), rgba(191,243,194,.97));
+            backdrop-filter: blur(8px);
+            padding: 50px 40px;
+            min-height: 650px;
+        }
+        .encabezado-esquema {
+            background: linear-gradient(90deg, #00c853, #64dd17, #43cea2);
+            padding: 18px;
+            text-align: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 14px;
+            margin-bottom: 30px;
+        }
+        /* Imagen Central — MÁS GRANDE */
+        .imagen-central {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+        .imagen-central img {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        /* Cajas de Información — IGUALES */
+        .caja {
+            position: absolute;
+            background: white;
+            border: 3px solid #2e7d32;
+            border-radius: 16px;
+            padding: 20px 22px;
+            width: 240px;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            z-index: 3;
+            transition: transform .3s ease;
+        }
+        .caja:hover {
+            transform: translateY(-3px);
+        }
+        .caja h4 {
+            color: #2e7d32;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .caja p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #2f4f2f;
+        }
+        .caja-nucleo {
+            top: 30px;
+            left: 30px;
+        }
+        .caja-vacuola {
+            top: 30px;
+            right: 30px;
+        }
+        .caja-mitocondria {
+            bottom: 30px;
+            left: 30px;
+        }
+        .caja-membrana {
+            bottom: 30px;
+            right: 30px;
+        }
+        /* Responsivo — IGUAL */
+        @media (max-width: 900px) {
+            .marco-esquema {
+                padding: 30px;
+                min-height: auto;
+            }
+            .caja {
+                position: static;
+                width: 100%;
+                margin: 12px 0;
+            }
+            .imagen-central {
+                position: static;
+                transform: none;
+                margin: 25px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón Volver al Inicio -->
+    <a href="index.html" class="boton-regreso">
+        <i class="fas fa-arrow-left"></i> Volver al Inicio
+    </a>
+    <!-- Título -->
+    <h1 class="titulo-pagina">🌿 CÉLULA VEGETAL 🌿</h1>
+    <!-- Contenido Principal -->
+    <div class="contenedor-pagina">
+        <div class="marco-esquema">
+            <div class="encabezado-esquema"></div>
+            <!-- Imagen Central -->
+            <div class="imagen-central">
+                <img src="celula-vegetal.png" alt="Partes de la célula vegetal">
+            </div>
+            <!-- Cajas de Información — TODAS IGUALES -->
+            <div class="caja caja-nucleo">
+                <h4>🧫 Núcleo</h4>
+                <p>Es el centro de control de la célula. Contiene el material genético y dirige el crecimiento, la reproducción y todas las funciones celulares.</p>
+            </div>
+            <div class="caja caja-vacuola">
+                <h4>💧 Vacuolas</h4>
+                <p>Son depósitos grandes que almacenan agua, nutrientes y desechos. En la célula vegetal ayudan a mantener la forma y firmeza de la planta.</p>
+            </div>
+            <div class="caja caja-mitocondria">
+                <h4>⚡ Mitocondria</h4>
+                <p>Es el encargado de producir energía para la célula. Realiza la respiración celular transformando nutrientes en energía utilizable.</p>
+            </div>
+            <div class="caja caja-membrana">
+                <h4>🛡️ Membrana Plasmática</h4>
+                <p>Es una capa delgada que protege a la célula y controla qué sustancias entran y salen, manteniendo el equilibrio interno.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

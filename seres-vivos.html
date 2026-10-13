@@ -87,14 +87,12 @@
             z-index: 1;
             align-items: flex-start;
         }
-        /* ✅ CONCEPTOS → 60% */
         .columna-izquierda { 
             width: calc(60% - 10px); 
             display: flex; 
             flex-direction: column; 
             gap: 25px; 
         }
-        /* ✅ BOTONES + VIDEO → 40% */
         .columna-derecha { 
             width: calc(40% - 10px); 
             display: flex; 
@@ -152,9 +150,6 @@
             transition: transform 0.3s ease;
         }
         .contenido-imagen img:hover { transform: scale(1.05); }
-        /* ==========================================
-           FLIPCARD ESTÁNDAR
-           ========================================== */
         .flip-card {
             background: transparent;
             width: 100%;
@@ -201,9 +196,6 @@
             padding: 10px;
             border: 1px solid #a5e9a5;
         }
-        /* ==========================================
-           FLIPCARD ESPECIAL — LOS 5 REINOS
-           ========================================== */
         .flip-card.reinos { height: 200px; }
         .flip-card.reinos .flip-card-back {
             font-size: 15px;
@@ -211,7 +203,6 @@
             padding: 15px 10px;
             justify-content: center;
         }
-        /* ✅ RESUMEN PERFECTAMENTE CENTRADO */
         .area-dibujo {
             border-radius: 18px;
             padding: 30px 25px;
@@ -221,7 +212,7 @@
             border: 2px solid #2e7d32;
             box-shadow: 0 8px 20px rgba(46,125,50,.14);
             text-align: center;
-            margin: 0 auto;
+            margin-top: 25px;
             width: 100%;
         }
         .area-dibujo h4 {
@@ -238,6 +229,32 @@
             color: #2f4f2f;
             line-height: 1.8;
             font-size: 17px;
+        }
+        /* === CAJA DE VIDEO - MISMO FORMATO QUE LAS OTRAS === */
+        .caja-video {
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(230,255,230,.95));
+            border: 2px solid #2e7d32;
+            border-radius: 18px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(46,125,50,.14);
+            text-align: center;
+            width: 100%;
+        }
+        .caja-video h4 {
+            font-family: 'Playfair Display', serif;
+            color: #2e7d32;
+            margin-bottom: 12px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .caja-video video {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .item-menu {
             padding: 14px 16px;
@@ -289,7 +306,7 @@
             .cuerpo-tarjeta { flex-direction: column; min-height: auto; }
             .contenido-imagen { border-left: none; border-top: 3px solid #2e7d32; min-height: 180px; }
             .flip-card.reinos { height: 220px; }
-            .caja-video video { height: 200px; }
+            .caja-video video { max-width: 280px; }
         }
     </style>
 </head>
@@ -367,7 +384,7 @@
             <!-- 🖍️ Resumen -->
             <div class="area-dibujo">
                 <h4>📝 Resumen y Esquema</h4>
-                <p>✅ <strong>Reino Monera:</strong> bacterias y organismos muy simples.</p>
+                <p>✅ <strong>Reino Monera:</strong> bacterias y organismos muy simples✨.</p>
                 <p>✅ <strong>Reino Protista:</strong> algas y amebas.</p>
                 <p>✅ <strong>Reino Hongos:</strong> mohos, setas y levaduras.</p>
                 <p>✅ <strong>Reino Vegetal y Animal:</strong> plantas fabrican su alimento; animales se alimentan de otros seres.</p>
@@ -394,10 +411,16 @@
                 <h5>🌱 Reino Vegetal y Animal</h5>
                 <p>Plantas producen alimento; animales se alimentan de otros.</p>
             </div>
+            <!-- 🎬 VIDEO - MISMO FORMATO Y TAMAÑO QUE LAS OTRAS PÁGINAS -->
+            <div class="caja-video">
+                <h4><i class="fas fa-film"></i> Video explicativo</h4>
+                <video src="seres-vivos-video.mp4" controls preload="metadata">
+                    Tu navegador no puede reproducir este video.
+                </video>
+            </div>
             <div class="boton-jugar">🎮 ¡Juega y Aprende!</div>
         </div>
     </div>
-
 <script>
 const tarjetas = document.querySelectorAll('.flip-card');
 tarjetas.forEach(function(tarjeta) {
